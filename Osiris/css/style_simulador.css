@@ -156,6 +156,8 @@ a {
 
 .campos button:hover {
     background-color: #dfad1a
+
+/* Modal */
 }
 #meuModal {
     display: none; /* Escondido por padrão */

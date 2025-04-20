@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="./css/style_dashboard.css">
+
+</head>
+
+<body>
+
+    <!-- Menu Lateral -->
+
+    <div class="menu_lateral">
+        <div class="container">
+            <img src="./assets/img/perfil.png" id="logo_slogan_branco">
+
+            <ul class="links">
+                <li>
+                    <a href="./index.html">Gerais</a>
+                </li>
+                <li>
+                    <select onchange="window.location.href = this.value">
+                        <option>Silos</option>
+                        <option value="simulador.html">Area 1</option>
+                        <option value="sobre.html">Area 2</option>
+                        <option value="contato.html">Area 3</option>
+                    </select>
+                </li>
+            </ul>
+            <a href="login.html" class="botao_sair">Sair</a>
+        </div>
+    </div>
+
+
+    <!-- KPIs -->
+
+    <div class="kpis">
+        <div class="container">
+
+            <div class="card">
+                <div class="icone">
+                    <img src="./assets/img/card_como_funciona1.png" id="img_card">
+                </div>
+
+                <div class="info">
+                    <span class="titulo">Titulo</span>
+                    <span class="dado">Dado</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="icone">
+                    <img src="./assets/img/card_como_funciona1.png" id="img_card">
+                </div>
+
+                <div class="info">
+                    <span class="titulo">Titulo</span>
+                    <span class="dado">Dado</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="icone">
+                    <img src="./assets/img/card_como_funciona1.png" id="img_card">
+                </div>
+
+                <div class="info">
+                    <span class="titulo">Titulo</span>
+                    <span class="dado">Dado</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="icone">
+                </div>
+
+                <div class="info">
+                    <span class="titulo">Titulo</span>
+                    <span class="dado">Dado</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Gráficos -->
+
+    <div class="graficos">
+        <div class="container_graficos">
+            <div class="grupo_graficos">
+
+                <div class="card">
+                    <span>Titulo</span>
+                    <canvas id="grafico_barra" width="700" height="140"></canvas>
+                </div>
+    
+                <div class="card">
+                    <span>Titulo</span>
+                    <canvas id="grafico_linha" width="700" height="140"></canvas>
+                </div>
+            </div>
+    
+            <div class="grafico_lateral">
+                <div class="card">
+                    <span>Titulo</span>
+                    <canvas id="grafico_lateral_canvas" width="200" height="200"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+
+</html>
+
+<script>
+    const ctx = document.getElementById('grafico_barra');
+
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho'],
+            datasets: [{
+                label: 'Umidade média',
+                data: [90, 89, 93, 87, 88, 82],
+                borderWidth: 1,
+            },
+            {
+                label: 'Temperatura média',
+                data: [22, 24, 27, 23, 20, 18],
+                borderWidth: 1,
+            }]
+        }
+    });
+
+
+    const lugar = document.getElementById('grafico_linha');
+
+    new Chart(lugar, {
+        type: 'line',
+        data: {
+            labels: ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00'],
+            datasets: [{
+                label: 'Umidade',
+                data: [80, 82, 80, 85, 80, 83],
+                borderWidth: 1
+            },
+            {
+                label: 'Temperatura',
+                data: [30, 29, 28, 25, 22, 23],
+                borderWidth: 1
+            }]
+        }
+    });
+
+    const lateral = document.getElementById('grafico_lateral_canvas');
+    new Chart(lateral, {
+        type: 'doughnut',
+        data: {
+            labels: ['Sensor 1', 'Sensor 2'],
+            datasets: [{
+                label: 'Sensores',
+                data: [60, 40],
+                borderWidth: 1
+            }]
+        }
+    });
+</script>

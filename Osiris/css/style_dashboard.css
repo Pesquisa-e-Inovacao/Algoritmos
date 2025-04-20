@@ -1,0 +1,180 @@
+/* Configurações padrão */
+
+/* Menu Lateral */
+
+body {
+    margin: 0;
+    font-family: sans-serif;
+    background-color: #f6f6f6;
+}
+
+:root {
+    --amerela: #F4C430;
+    --cinza: #1C1F20;
+}
+
+.menu_lateral {
+    width: 200px;
+    height: 100%;
+    display: flex;
+    position: fixed;
+    background-color: #1C1F20;
+}
+
+.menu_lateral .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#logo_slogan_branco {
+    display: flex;
+    justify-content: flex-start;
+    height: 80px;
+}
+
+.links {
+    display: flex;
+    align-items: center;
+    margin-right: 60px;
+    flex-direction: column;
+    list-style: none;
+    gap: 20px;
+    height: 200px; 
+}
+
+.links a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.botao_sair{
+    height: 40px;
+    width: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+    background-color: red;
+    border: none;
+    cursor: pointer;
+    color: #fff;
+    text-decoration: none;
+}
+
+.botao_sair:hover {
+    background-color: rgba(255, 0, 0, 0.781)
+}
+
+/* Estilo do <select> no menu lateral */
+.menu_lateral select {
+    display: flex;
+    border: none;
+    background-color: var(--cinza); /* mesma cor que você usa no projeto */
+    color: #fff;
+    font-size: 16px;
+    margin-top: 10px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.menu_lateral option {
+    cursor: pointer;
+    background-color: #ffffff;
+    color: #000;
+}
+
+
+/* KPIs */
+
+.kpis .container {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    padding: 0 220px;
+}
+
+.kpis .card {
+    display: flex;
+    margin-top: 30px;
+    background-color: #fff;
+    height: 80px;
+    width: 175px;
+    padding: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    border-radius: 5px;
+}
+
+.icone #img_card {
+    height: 80px;
+    margin-right: 20px;
+}
+
+
+
+.info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+/* Gráficos */
+
+.grafico_lateral .container {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.graficos {
+    margin-top: 30px;
+}
+
+.container_graficos {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 0 220px;
+    gap: 20px;
+}
+
+.grupo_graficos {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.graficos .card,
+.grafico_lateral .card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #fff;
+    padding: 10px;
+    height: 180px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    border-radius: 5px;
+}
+
+.graficos .card {
+    width: 860px;
+}
+
+.grafico_lateral .card {
+    width: 200px;
+    height: 400px;
+}
+
+.graficos .card span {
+    font-size: 20px;
+}
+
+.graficos .grafico_lateral .card span {
+    font-size: 20px;
+    height: 140px;
+}
+
