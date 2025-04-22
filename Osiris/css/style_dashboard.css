@@ -1,7 +1,5 @@
 /* Configurações padrão */
 
-/* Menu Lateral */
-
 body {
     margin: 0;
     font-family: sans-serif;
@@ -13,6 +11,7 @@ body {
     --cinza: #1C1F20;
 }
 
+/* Menu Lateral */
 .menu_lateral {
     width: 200px;
     height: 100%;
@@ -43,7 +42,7 @@ body {
     flex-direction: column;
     list-style: none;
     gap: 20px;
-    height: 200px; 
+    height: 200px;
 }
 
 .links a {
@@ -51,7 +50,15 @@ body {
     text-decoration: none;
 }
 
-.botao_sair{
+.perfil {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    color: #fff;
+}
+
+.botao_sair {
     height: 40px;
     width: 120px;
     display: flex;
@@ -73,7 +80,8 @@ body {
 .menu_lateral select {
     display: flex;
     border: none;
-    background-color: var(--cinza); /* mesma cor que você usa no projeto */
+    background-color: var(--cinza);
+    /* mesma cor que você usa no projeto */
     color: #fff;
     font-size: 16px;
     margin-top: 10px;
@@ -94,7 +102,7 @@ body {
     display: flex;
     flex-direction: row;
     gap: 30px;
-    padding: 0 220px;
+    margin-left: 220px;
 }
 
 .kpis .card {
@@ -102,23 +110,28 @@ body {
     margin-top: 30px;
     background-color: #fff;
     height: 80px;
-    width: 175px;
+    width: 180px;
     padding: 10px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
     border-radius: 5px;
+    justify-content: left;
+    
 }
-
-.icone #img_card {
-    height: 80px;
-    margin-right: 20px;
-}
-
-
 
 .info {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    gap: 20px;
+}
+
+.info .titulo {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.info .dado {
+    font-weight: lighter;
+    font-size: 18px;
 }
 
 /* Gráficos */
@@ -169,12 +182,4 @@ body {
     height: 400px;
 }
 
-.graficos .card span {
-    font-size: 20px;
-}
-
-.graficos .grafico_lateral .card span {
-    font-size: 20px;
-    height: 140px;
-}
 

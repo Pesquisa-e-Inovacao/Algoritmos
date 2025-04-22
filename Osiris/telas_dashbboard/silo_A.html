@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard-Gerais</title>
+    <title>Silo A</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link rel="stylesheet" href="./css/style_dashboard.css">
+    <link rel="stylesheet" href="../css/style_dashboard.css">
 
 </head>
 
@@ -17,26 +17,26 @@
     <div class="menu_lateral">
         <div class="container">
             <div class="perfil">
-                <img src="./assets/img/perfil.png" id="logo_slogan_branco">
+                <img src="../assets/img/perfil.png" id="logo_slogan_branco">
 
                 <span>Nome do Usuário</span>
             </div>
 
             <ul class="links">
                 <li>
-                    <a href="./dashboard.html">Gerais</a>
+                    <a href="../dashboard.html">Gerais</a>
                 </li>
                 <li>
                     <select onchange="window.location.href = this.value">
                         <option>Silos</option>
-                        <option value="./telas_dashbboard/silo_A.html">Silo A</option>
-                        <option value="./telas_dashbboard/silo_B.html">Silo B</option>
-                        <option value="./telas_dashbboard/silo_C.html">Silo C</option>
-                        <option value="./telas_dashbboard/silo_D.html">Silo D</option>
+                        <option value="../telas_dashbboard/silo_A.html">Silo A</option>
+                        <option value="../telas_dashbboard/silo_B.html">Silo B</option>
+                        <option value="../telas_dashbboard/silo_C.html">Silo C</option>
+                        <option value="../telas_dashbboard/silo_D.html">Silo D</option>
                     </select>
                 </li>
             </ul>
-            <a href="./index.html" class="botao_sair">Sair</a>
+            <a href="../index.html" class="botao_sair">Sair</a>
         </div>
     </div>
 
@@ -48,38 +48,39 @@
 
             <div class="card">
                 <div class="info">
-                    <span class="titulo">Silos em Funcionamento</span>
-                    <span class="dado">4 Silos</span>
+                    <span class="titulo">Nível de gás metano atual</span>
+                    <span class="dado">0.80</span>
                 </div>
             </div>
 
             <div class="card">
                 <div class="info">
                     <span class="titulo">Percentual máximo de gás captado</span>
-                    <span class="dado">4.90 | Silo D | 07:00</span>
+                    <span class="dado">1.20 | 01:00</span>
                 </div>
             </div>
 
             <div class="card">
                 <div class="info">
                     <span class="titulo">Percentual mínimo de gás captado</span>
-                    <span class="dado">0.20 | Silo A | 12:00</span>
+                    <span class="dado">0.20 | 12:00</span>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="info">
+                    <span class="titulo">Nível máximo de armazenamento</span>
+                    <span class="dado">20 mil toneladas</span>                
                 </div>
             </div>
 
             <div class="card">
                 <div class="info">
-                    <span class="titulo">Silos com riscos de acidentes</span>
-                    <span class="dado">Silo B | Silo D </span>
+                    <span class="titulo">Status do Silo</span>
+                    <span class="dado">Ativo</span>
                 </div>
             </div>
 
-            <div class="card">
-                <div class="info">
-                    <span class="titulo">Capacidade Máxima</span>
-                    <span class="dado">80 Mil toneladas</span>                
-                </div>
-            </div>
         </div>
     </div>
 
@@ -117,12 +118,12 @@
     new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: ['Silo A', 'Silo B', 'Silo C', 'Silo D'],
+            labels: ['17/04', '18/04', '19/04', '20/04', '21/04', '22/04', '23/04'],
             datasets: [
                 {
                     label: 'Dia em estoque',
-                    data: [10 , 30, 120, 100],
-                    backgroundColor: ['#008000', '#9B2226', '#005F73', '#EE9B00'],
+                    data: [20000 ,18000 , 18000, 12000, 12000, 8000, 5000],
+                    backgroundColor: ['#008000'],
                     barThickness: 60
                 }
             ]
@@ -135,7 +136,7 @@
                 },
                 title: {
                     display: true,
-                    text: 'Silos e dias em armazenagem',
+                    text: 'Nível de armazenamento (Semanal)',
                     color: '#222222',
                     font: {
                         size: 20,
@@ -187,33 +188,6 @@
                 backgroundColor: '#008000',
                 borderColor: '#008000'
             },
-
-            {
-                label: 'Silo B',
-                data: [
-                    1.90, 2.20, 2.90, 3.10, 3.15, 2.90, 1.90, 2.30, 2.40, 1.80, 2.40, 2.30, 1.20, 2.50,
-                ], borderWidth: 1,
-                backgroundColor: '#9B2226',
-                borderColor: '#9B2226'
-            },
-
-            {
-                label: 'Silo C',
-                data: [
-                    0.50, 2.10, 4.70, 3.80, 3.10, 0.80, 1.20, 2.00, 4.20, 3.60, 0.90, 2.40, 1.00, 1.10, 
-                ], borderWidth: 1,
-                backgroundColor: '#005F73',
-                borderColor: '#005F73'
-            },
-
-            {
-                label: 'Silo D',
-                data: [
-                    4.80, 2.30, 1.10, 0.30, 2.90, 3.50, 1.70, 4.90, 2.50, 1.40, 0.60, 3.10, 2.20, 2.30, 
-                ],borderWidth: 1,
-                backgroundColor: '#EE9B00',
-                borderColor: '#EE9B00'
-            },
             ]
         },
         options: {
@@ -228,7 +202,7 @@
                 },
                 title: {
                     display: true,
-                    text: 'Média diária dos gases nos silos (por Hora)',
+                    text: 'Média diária dos gases no silo A (por Hora)',
                     color: '#222222',
                     font: {
                         size: 20,
@@ -247,11 +221,11 @@
     new Chart(lateral, {
         type: 'doughnut',
         data: {
-            labels: ['Silo A', 'Silo B', 'Silo C', 'Silo D'],
+            labels: ['Ocupado', 'Livre'],
             datasets: [{
-                label: 'Percentual',
-                backgroundColor: ['#008000', '#9B2226', '#005F73', '#EE9B00'],
-                data: [30, 40, 10, 20], 
+                label: 'Toneladas',
+                backgroundColor: ['#008000', '#222222',],
+                data: [5000, 15000],
             }]
         },
         options: {
@@ -267,7 +241,7 @@
                 },
                 title: {
                     display: true,
-                    text: 'Ocupação total dos silos',
+                    text: 'Ocupação atual do silo A',
                     color: '#222222',
                     font: {
                         size: 20,

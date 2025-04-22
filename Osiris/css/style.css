@@ -42,7 +42,7 @@ body {
     justify-content: space-between;
     color: #fff;
     list-style: none;
-    width: 300px;
+    width: 150px;
 }
 
 .home {
@@ -198,7 +198,7 @@ a {
 .card_beneficios .card {
     display: flex;
     flex-direction: column;
-    border: 1px solid #000;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
     cursor: pointer;
     padding: 10px;
     width: 50%;
@@ -207,8 +207,9 @@ a {
 
 #img_beneficios {
     display: flex;
-    width: 520px;
+    width: 600px;
     height: 330px;
+    border: 1px solid ;
 }
 
 /* Como funciona */
@@ -250,7 +251,7 @@ a {
     display: flex;
     flex-direction: column;
     align-items: center;
-    border: 1px solid #000;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
     width: 250px;
     height: 330px;
     border-radius: 20px;
@@ -384,7 +385,7 @@ a {
     display: flex;
     align-items: center;
     flex-direction: column;
-    border: 1px solid #000;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
     width: 400px;
     height: 450px;
     border-radius: 20px;

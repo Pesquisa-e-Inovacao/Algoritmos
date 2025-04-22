@@ -96,3 +96,13 @@
   a:hover {
     text-decoration: underline; /* Adiciona sublinhado */
   }
+
+  #div_msg {
+    display: flex;
+    text-align: left;
+    font-size: 14px;
+    flex-direction: column;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    gap: 0;
+  }

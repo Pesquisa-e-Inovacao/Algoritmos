@@ -10,28 +10,156 @@
 
 <body>
     <div class="container">
-        <img src="./assets/img/logo_slogan_branco.png" alt="Logo Osiris" class="logo">
+        <a href="./index.html"><img src="./assets/img/logo_slogan_branco.png" width="300" id="logo_slogan_branco"></a>
         <br>
         <div class="box">
             <h2>Cadastro</h2>
 
             <span>Nome da empresa:</span>
-            <input type="text" placeholder="Nome da Empresa">
+            <input id="idEmpresa" type="text" placeholder="Nome da Empresa">
             <br>
             <span>Endereço de email:</span>
-            <input type="email" placeholder="Endereço de Email">
+            <input id="idEmail" type="email" placeholder="Endereço de Email">
             <br>
             <span>CNPJ:</span>
-            <input type="text" placeholder="CNPJ">
+            <input id="idCNPJ" type="text" placeholder="CNPJ">
             <br>
             <span>Senha:</span>
-            <input type="password" placeholder="Senha">
+            <input id="idSenha" type="password" oninput="verificarSenha()" placeholder="Senha">
 
-            <button>Enviar</button>
+            <div id="div_msg"></div>
+
+            <button onClick="verify()">Enviar</button>
         </div>
         <br>
         <p>Já é um membro? <a href="login.html">Fazer login</a></p>
     </div>
+
 </body>
 
 </html>
+
+<script>
+
+function verificarSenha() {
+        var senha = idSenha.value;
+        var num = "0123456789";
+        var carEsp = "!@#$%&*().";
+        var verificar_caracter_esp = 0;
+        var verificar_numero = 0;
+        var mensagem = "";
+
+        if (senha.length >= 8) {
+            mensagem += `<span style="color: green;">Tem mais que 8 caracteres</span> <br>`;
+        } else {
+            mensagem += `<span style="color: red;">Tem mais que 8 caracteres</span> <br>`;
+        }
+
+        if (senha != senha.toLowerCase()) {
+            mensagem += `<span style="color: green;">Contém pelo menos 1 caratere maiúsculo</span> <br>`;
+        } else {
+            mensagem += `<span style="color: red;">Contém pelo menos 1 caratere maiúsculo</span> <br>`;
+        }
+
+        for (var j = 0; j < senha.length; j++) {
+            if (carEsp.includes(senha[j])) {
+                verificar_caracter_esp = 1;
+                j = (senha.length) - 1;
+            } else {
+                verificar_caracter_esp = 0;
+            }
+        }
+
+        if (verificar_caracter_esp == 1) {
+            mensagem += `<span style="color: green;">Contém pelo menos 1 caractere especial</span> <br>`;
+        } else {
+            mensagem += `<span style="color: red;">Contém pelo menos 1 caractere especial</span> <br>`;
+        }
+
+        for (var i = 0; i < senha.length; i++) {
+            if (num.includes(senha[i])) {
+                verificar_numero = 1;
+                i = (senha.length) - 1;
+            } else {
+                verificar_numero = 0;
+            }
+        }
+
+        if (verificar_numero == 1) {
+            mensagem += `<span style="color: green;">Contém pelo menos 1 número</span> <br>`;
+        } else {
+            mensagem += `<span style="color: red;">Contém pelo menos 1 número</span> <br>`;
+        }
+
+        div_msg.innerHTML = mensagem;
+
+    }
+
+    function verify(){
+        var nome = idEmpresa.value;
+        var email = idEmail.value;
+        var cnpj = idCNPJ.value;
+        var senha = idSenha.value;
+        var num = "0123456789"
+        var carEsp = "!@#$%&*()."
+        var verify_email;
+        var verify_senha_min8;
+        var verify_senha_maisc;
+        var verify_senha_carac;
+        var verify_senha_num;
+
+
+        if(nome == "" || email == "" || cnpj == "" || senha == ""){
+            alert("Campos preenchidos incorretamente.")
+        } else{
+            if(email.includes("@") && (email.endsWith(".com") || email.endsWith(".com.br") || email.endsWith(".org"))){
+                verify_email = 1;
+            } else{
+                verify_email = 0;
+            }
+            if(senha.length >= 8){
+                verify_senha_min8 = 1;
+            } else {
+                verify_senha_min8 = 0;
+            }
+            if(senha != senha.toLowerCase()){
+                verify_senha_maisc = 1;
+            } else {
+                verify_senha_maisc = 0;
+            }
+            for(var j = 0; j < senha.length; j++){
+                if(carEsp.includes(senha[j])){
+                    verify_senha_carac = 1;
+                    j = (senha.length) - 1;
+                } else{
+                    verify_senha_carac = 0;
+                }
+            }
+            for(var i = 0; i < senha.length; i++){
+                if(num.includes(senha[i])){
+                    verify_senha_num = 1;
+                    i = (senha.length) - 1;
+                } else{
+                    verify_senha_num = 0;
+                }
+            }
+            
+            if(verify_email == 0) {
+                alert("Email incorreto")
+            }else if (verify_senha_min8 == 0){
+                alert("A senha deve conter pelo menos 8 caracteres")
+            }else if (verify_senha_maisc == 0) {
+                alert("A senha deve pelo menos 1 caractere maiúsculo")
+            } else if (verify_senha_carac == 0) {
+                alert("A senha deve conter pelo menos 1 caractere especial")
+            } else if (verify_senha_num == 0) {
+                alert("A senha deve conter pelo menos 1 número")
+            }
+
+            if(verify_email == 1 && verify_senha_carac == 1 && verify_senha_num == 1){
+                alert("Usuário criado com sucesso!")
+                window.location.href = 'login.html';
+            } 
+        }
+    }
+</script>
