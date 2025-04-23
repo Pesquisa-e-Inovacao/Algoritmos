@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Simulador Financeiro</title>
     <link rel="stylesheet" href="./css/style_simulador.css">
-    
+
 </head>
 
 <body>
@@ -69,33 +69,33 @@
             var valorT = ((qtdSoja * 1000) / pesoSaca) * valorSaca;
             var mensagem = "";
 
-            if (pct > 100) {
-                mensagem = "<strong>ERRO:</strong> O valor de soja armazenada é maior que a capacidade do armazém!";
+            if (qtdSoja == "" || totArmazem == "") {
+                alert("Os campos não podem ser vazios.")
             } else {
-                var pctE = "";
-                var custoR = "";
 
-                if (silo == "Silo-Madeira") {
-                    pctE = "50-60%";
-                    custoR = "R$3.000 a R$40.000";
-                } else if (silo == "Silo-Metálico") {
-                    pctE = "30-40%";
-                    custoR = "R$5.000 a R$50.000";
-                } else if (silo == "Silo-Alvenaria") {
-                    pctE = "20-30%";
-                    custoR = "R$8.000 a R$70.000";
+                if (pct > 100) {
+                    mensagem = "<strong>ERRO:</strong> O valor de soja armazenada é maior que a capacidade do armazém!";
                 } else {
-                    pctE = "15-25%";
-                    custoR = "R$10.000 a R$100.000";
+                    var pctE = "";
+
+                    if (silo == "Silo-Madeira") {
+                        pctE = "50-60%";
+                    } else if (silo == "Silo-Metálico") {
+                        pctE = "30-40%";
+                    } else if (silo == "Silo-Alvenaria") {
+                        pctE = "20-30%";
+                    } else {
+                        pctE = "15-25%";
+                    }
+
+                    mensagem += `<h3>ARMAZÉM</h3><p>Tipo: ${silo}</p>`;
+                    mensagem += `<h3>CAPACIDADE</h3><p>Capacidade atual: ${pct.toFixed(2)}%<br>Ar restante: ${(100 - pct).toFixed(2)}%<br>Capacidade de metano máxima: ${((100 - pct) * 0.05).toFixed(2)}%</p>`;
+                    mensagem += `<h3>RISCOS</h3><p>Risco estimado: ${pctE}<br>Perda estimada: R$${valorT.toFixed(2)}`;
                 }
 
-                mensagem += `<h3>ARMAZÉM</h3><p>Tipo: ${silo}</p>`;
-                mensagem += `<h3>CAPACIDADE</h3><p>Capacidade atual: ${pct.toFixed(2)}%<br>Ar restante: ${(100 - pct).toFixed(2)}%<br>Capacidade de metano máxima: ${((100 - pct) * 0.05).toFixed(2)}%</p>`;
-                mensagem += `<h3>RISCOS</h3><p>Risco estimado: ${pctE}<br>Perda estimada: R$${valorT.toFixed(2)}<br>Custo do reparo: ${custoR}</p>`;
+                document.getElementById("div_mensagem").innerHTML = mensagem;
+                abrirModal();
             }
-
-            document.getElementById("div_mensagem").innerHTML = mensagem;
-            abrirModal();
         }
 
         function abrirModal() {
