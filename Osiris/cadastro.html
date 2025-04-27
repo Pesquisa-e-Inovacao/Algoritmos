@@ -22,7 +22,7 @@
             <input id="idEmail" type="email" placeholder="exemplo@exemplo.com">
             <br>
             <span>CNPJ:</span>
-            <input id="idCNPJ" type="text" placeholder="999.999.999/99">
+            <input id="idCNPJ" type="text" oninput="verificarCNPJ()" maxlength=18 placeholder="12.345.678/0001-00">
             <br>
             <span>Senha:</span>
             <input id="idSenha" type="password" oninput="verificarSenha()" placeholder="digite aqui...">
@@ -41,7 +41,7 @@
 
 <script>
 
-function verificarSenha() {
+    function verificarSenha() {
         var senha = idSenha.value;
         var num = "0123456789";
         var carEsp = "!@#$%&*().";
@@ -95,7 +95,20 @@ function verificarSenha() {
 
     }
 
-    function verify(){
+    function verificarCNPJ() {
+        var cnpj = idCNPJ.value;
+        if (cnpj[2] != "." && (cnpj.length == 2)) {
+            idCNPJ.value += "."
+        } else if (cnpj[6] != "." && (cnpj.length == 6)) {
+            idCNPJ.value += "."
+        } else if (cnpj[10] != "/" && (cnpj.length == 10)) {
+            idCNPJ.value += "/"
+        } else if (cnpj[15] != "-" && (cnpj.length == 15)) {
+            idCNPJ.value += "-"
+        }
+    }
+
+    function verify() {
         var nome = idEmpresa.value;
         var email = idEmail.value;
         var cnpj = idCNPJ.value;
@@ -109,46 +122,46 @@ function verificarSenha() {
         var verify_senha_num;
 
 
-        if(nome == "" || email == "" || cnpj == "" || senha == ""){
+        if (nome == "" || email == "" || cnpj == "" || senha == "") {
             alert("Campos preenchidos incorretamente.")
-        } else{
-            if(email.includes("@") && (email.endsWith(".com") || email.endsWith(".com.br") || email.endsWith(".org"))){
+        } else {
+            if (email.includes("@") && (email.endsWith(".com") || email.endsWith(".com.br") || email.endsWith(".org"))) {
                 verify_email = 1;
-            } else{
+            } else {
                 verify_email = 0;
             }
-            if(senha.length >= 8){
+            if (senha.length >= 8) {
                 verify_senha_min8 = 1;
             } else {
                 verify_senha_min8 = 0;
             }
-            if(senha != senha.toLowerCase()){
+            if (senha != senha.toLowerCase()) {
                 verify_senha_maisc = 1;
             } else {
                 verify_senha_maisc = 0;
             }
-            for(var j = 0; j < senha.length; j++){
-                if(carEsp.includes(senha[j])){
+            for (var j = 0; j < senha.length; j++) {
+                if (carEsp.includes(senha[j])) {
                     verify_senha_carac = 1;
                     j = (senha.length) - 1;
-                } else{
+                } else {
                     verify_senha_carac = 0;
                 }
             }
-            for(var i = 0; i < senha.length; i++){
-                if(num.includes(senha[i])){
+            for (var i = 0; i < senha.length; i++) {
+                if (num.includes(senha[i])) {
                     verify_senha_num = 1;
                     i = (senha.length) - 1;
-                } else{
+                } else {
                     verify_senha_num = 0;
                 }
             }
-            
-            if(verify_email == 0) {
+
+            if (verify_email == 0) {
                 alert("Email incorreto")
-            }else if (verify_senha_min8 == 0){
+            } else if (verify_senha_min8 == 0) {
                 alert("A senha deve conter pelo menos 8 caracteres")
-            }else if (verify_senha_maisc == 0) {
+            } else if (verify_senha_maisc == 0) {
                 alert("A senha deve pelo menos 1 caractere maiúsculo")
             } else if (verify_senha_carac == 0) {
                 alert("A senha deve conter pelo menos 1 caractere especial")
@@ -156,10 +169,10 @@ function verificarSenha() {
                 alert("A senha deve conter pelo menos 1 número")
             }
 
-            if(verify_email == 1 && verify_senha_carac == 1 && verify_senha_num == 1){
+            if (verify_email == 1 && verify_senha_carac == 1 && verify_senha_num == 1) {
                 alert("Usuário criado com sucesso!")
                 window.location.href = 'login.html';
-            } 
+            }
         }
     }
 </script>
