@@ -19,7 +19,7 @@
             <input id="idEmpresa" type="text" placeholder="Nome da empresa">
             <br>
             <span>Endereço de email:</span>
-            <input id="idEmail" type="email" placeholder="exemplo@exemplo.com">
+            <input id="idEmail" type="email" onInput="verificarEmail()" placeholder="exemplo@exemplo.com">
             <br>
             <span>CNPJ:</span>
             <input id="idCNPJ" type="text" oninput="verificarCNPJ()" maxlength=18 placeholder="12.345.678/0001-00">
@@ -29,7 +29,7 @@
 
             <div id="div_msg"></div>
 
-            <button onClick="verify()">Enviar</button>
+            <button onClick="enviar()">Enviar</button>
         </div>
         <br>
         <p>Já é um membro? <a href="login.html">Fazer login</a></p>
@@ -90,9 +90,12 @@
         } else {
             mensagem += `<span style="color: red;">Contém pelo menos 1 número</span> <br>`;
         }
-
         div_msg.innerHTML = mensagem;
-
+        if (verificar_numero == 1 && verificar_caracter_esp == 1 && senha.length >= 8 && senha != senha.toLowerCase()) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     function verificarCNPJ() {
@@ -106,9 +109,14 @@
         } else if (cnpj[15] != "-" && (cnpj.length == 15)) {
             idCNPJ.value += "-"
         }
+        if (cnpj.length == 18) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
-    function verify() {
+    function verificarEmail() {
         var nome = idEmpresa.value;
         var email = idEmail.value;
         var cnpj = idCNPJ.value;
@@ -121,58 +129,60 @@
         var verify_senha_carac;
         var verify_senha_num;
 
-
-        if (nome == "" || email == "" || cnpj == "" || senha == "") {
-            alert("Campos preenchidos incorretamente.")
-        } else {
             if (email.includes("@") && (email.endsWith(".com") || email.endsWith(".com.br") || email.endsWith(".org"))) {
                 verify_email = 1;
             } else {
                 verify_email = 0;
             }
-            if (senha.length >= 8) {
-                verify_senha_min8 = 1;
-            } else {
-                verify_senha_min8 = 0;
-            }
-            if (senha != senha.toLowerCase()) {
-                verify_senha_maisc = 1;
-            } else {
-                verify_senha_maisc = 0;
-            }
-            for (var j = 0; j < senha.length; j++) {
-                if (carEsp.includes(senha[j])) {
-                    verify_senha_carac = 1;
-                    j = (senha.length) - 1;
-                } else {
-                    verify_senha_carac = 0;
-                }
-            }
-            for (var i = 0; i < senha.length; i++) {
-                if (num.includes(senha[i])) {
-                    verify_senha_num = 1;
-                    i = (senha.length) - 1;
-                } else {
-                    verify_senha_num = 0;
-                }
-            }
 
-            if (verify_email == 0) {
-                alert("Email incorreto")
-            } else if (verify_senha_min8 == 0) {
-                alert("A senha deve conter pelo menos 8 caracteres")
-            } else if (verify_senha_maisc == 0) {
-                alert("A senha deve pelo menos 1 caractere maiúsculo")
-            } else if (verify_senha_carac == 0) {
-                alert("A senha deve conter pelo menos 1 caractere especial")
-            } else if (verify_senha_num == 0) {
-                alert("A senha deve conter pelo menos 1 número")
+            if (verify_email == 1) {
+                return true;
+            } else {
+                return false;
             }
+        }
+    function enviar() {
+        if (verificarCNPJ() && verificarEmail()&& verificarSenha()) {
+            var nomeVar = idEmpresa.value;
+            var emailVar = idEmail.value;
+            var senhaVar = idSenha.value;
+            var cnpjVar = idCNPJ.value;
+            fetch("/usuarios/cadastrar", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    // crie um atributo que recebe o valor recuperado aqui
+                    // Agora vá para o arquivo routes/usuario.js
+                    nomeServer: nomeVar,
+                    emailServer: emailVar,
+                    senhaServer: senhaVar,
+                    cnpjServer: cnpjVar,
+                }),
+            })
+                .then(function (resposta) {
+                    console.log("resposta: ", resposta);
 
-            if (verify_email == 1 && verify_senha_carac == 1 && verify_senha_num == 1) {
-                alert("Usuário criado com sucesso!")
-                window.location.href = 'login.html';
-            }
+                    if (resposta.ok) {
+
+                        div_msg.innerHTML =
+                            "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+
+                        setTimeout(() => {
+                            window.location = "login.html";
+                        }, "2000");
+                    } else {
+                        throw "Houve um erro ao tentar realizar o cadastro!";
+                    }
+                })
+                .catch(function (resposta) {
+                    console.log(`#ERRO: ${resposta}`);
+                });
+            return false;
+
+        } else{
+            alert("nao vai dar fetch")
         }
     }
 </script>
