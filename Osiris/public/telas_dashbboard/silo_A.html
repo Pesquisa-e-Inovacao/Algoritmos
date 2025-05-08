@@ -40,10 +40,14 @@
         </div>
     </div>
 
-    <div style="text-align: center; margin: 20px 0;">
-        <h2 style="font-weight: bold; color: #333;">Olá usuário, você está vendo as métricas do silo A</h2>
-      </div>
-
+     <div class="titulo">
+        <div class="container">
+            <div style="text-align: center; margin: 20px 0;">
+                <h2 style="font-weight: bold; color: #333;">Olá usuário, você está vendo as métricas gerais dos silos
+                </h2>
+            </div>
+        </div>
+    </div>
 
     <!-- KPIs -->
 
@@ -52,7 +56,7 @@
 
             <div class="card">
                 <div class="info">
-                    <span class="titulo">Nível de gás metano atual</span>
+                    <span class="titulo">Percentual de gás metano atual</span>
                     <span class="dado">0.80</span>
                 </div>
             </div>
@@ -73,7 +77,7 @@
             
             <div class="card">
                 <div class="info">
-                    <span class="titulo">Total de alertas</span>
+                    <span class="titulo"></span>
                     <span class="dado">0</span>                
                 </div>
             </div>
@@ -90,23 +94,13 @@
 
     <!-- Gráficos -->
 
-    <div class="graficos">
-        <div class="container_graficos">
-            <div class="grupo_graficos">
-
-                <div class="card">
-                    <canvas id="grafico_barra" width="850" height="190"></canvas>
-                </div>
-
-                <div class="card">
-                    <canvas id="grafico_linha" width="850" height="190"></canvas>
-                </div>
+      <div class="graficos">
+        <div class="container">
+            <div class="card">
+                <canvas id="grafico_barra"></canvas>
             </div>
-
-            <div class="grafico_lateral">
-                <div class="card">
-                    <canvas id="grafico_lateral_canvas" width="200" height="400"></canvas>
-                </div>
+            <div class="card">
+                <canvas id="grafico_linha"></canvas>
             </div>
         </div>
     </div>
@@ -207,45 +201,6 @@
                 title: {
                     display: true,
                     text: 'Média diária dos gases no silo A (por Hora)',
-                    color: '#222222',
-                    font: {
-                        size: 20,
-                    }
-                },
-                tooltip: {
-                    backgroundColor: '#333333',
-                    titleColor: '#ffffff',
-                    bodyColor: '#ffffff'
-                }
-            }
-        }
-    });
-
-    const lateral = document.getElementById('grafico_lateral_canvas');
-    new Chart(lateral, {
-        type: 'doughnut',
-        data: {
-            labels: ['Ocupado', 'Livre'],
-            datasets: [{
-                label: 'Toneladas',
-                backgroundColor: ['#008000', '#222222',],
-                data: [5000, 15000],
-            }]
-        },
-        options: {
-            responsive: false,
-            plugins: {
-                
-                legend: {
-                    labels: {
-                        font: {
-                            size: 12
-                        }
-                    }
-                },
-                title: {
-                    display: true,
-                    text: 'Ocupação atual do silo A',
                     color: '#222222',
                     font: {
                         size: 20,

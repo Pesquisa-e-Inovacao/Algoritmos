@@ -40,10 +40,14 @@
         </div>
     </div>
 
-    <div style="text-align: center; margin: 20px 0;">
-        <h2 style="font-weight: bold; color: #333;">Olá usuário, você está vendo as métricas do silo C</h2>
-      </div>
-
+     <div class="titulo">
+        <div class="container">
+            <div style="text-align: center; margin: 20px 0;">
+                <h2 style="font-weight: bold; color: #333;">Olá usuário, você está vendo as métricas gerais dos silos
+                </h2>
+            </div>
+        </div>
+    </div>
 
     <!-- KPIs -->
 
@@ -53,28 +57,28 @@
             <div class="card">
                 <div class="info">
                     <span class="titulo">Nível de gás metano atual</span>
-                    <span class="dado">1.30</span>
+                    <span class="dado">0.80</span>
                 </div>
             </div>
 
             <div class="card">
                 <div class="info">
                     <span class="titulo">Percentual máximo de gás captado</span>
-                    <span class="dado">4.70 | 02:00</span>
+                    <span class="dado">1.20 | 01:00</span>
                 </div>
             </div>
 
             <div class="card">
                 <div class="info">
                     <span class="titulo">Percentual mínimo de gás captado</span>
-                    <span class="dado">0.50 | 00:00</span>
+                    <span class="dado">0.20 | 12:00</span>
                 </div>
             </div>
             
             <div class="card">
                 <div class="info">
                     <span class="titulo">Total de alertas</span>
-                    <span class="dado">1</span>                
+                    <span class="dado">0</span>                
                 </div>
             </div>
 
@@ -90,30 +94,19 @@
 
     <!-- Gráficos -->
 
-    <div class="graficos">
-        <div class="container_graficos">
-            <div class="grupo_graficos">
-
-                <div class="card">
-                    <canvas id="grafico_barra" width="850" height="190"></canvas>
-                </div>
-
-                <div class="card">
-                    <canvas id="grafico_linha" width="850" height="190"></canvas>
-                </div>
+      <div class="graficos">
+        <div class="container">
+            <div class="card">
+                <canvas id="grafico_barra"></canvas>
             </div>
-
-            <div class="grafico_lateral">
-                <div class="card">
-                    <canvas id="grafico_lateral_canvas" width="200" height="400"></canvas>
-                </div>
+            <div class="card">
+                <canvas id="grafico_linha"></canvas>
             </div>
         </div>
     </div>
 
 
 </body>
-
 </html>
 
 <script>
@@ -206,45 +199,6 @@
                 title: {
                     display: true,
                     text: 'Média diária dos gases nos silos (por Hora)',
-                    color: '#222222',
-                    font: {
-                        size: 20,
-                    }
-                },
-                tooltip: {
-                    backgroundColor: '#333333',
-                    titleColor: '#ffffff',
-                    bodyColor: '#ffffff'
-                }
-            }
-        }
-    });
-
-    const lateral = document.getElementById('grafico_lateral_canvas');
-    new Chart(lateral, {
-        type: 'doughnut',
-        data: {
-            labels: ['Ocupado', 'Livre'],
-            datasets: [{
-                label: 'Toneladas',
-                backgroundColor: ['#005F73', '#222222',],
-                data: [8000, 12000],
-            }]
-        },
-        options: {
-            responsive: false,
-            plugins: {
-                
-                legend: {
-                    labels: {
-                        font: {
-                            size: 12
-                        }
-                    }
-                },
-                title: {
-                    display: true,
-                    text: 'Ocupação atual do silo C',
                     color: '#222222',
                     font: {
                         size: 20,

@@ -40,14 +40,21 @@
         </div>
     </div>
 
-    <div style="text-align: center; margin: 20px 0;">
-        <h2 style="font-weight: bold; color: #333;">Olá usuário, você está vendo as métricas gerais dos silos</h2>
-      </div>
+    <main>
+
+    <div class="titulo">
+        <div class="container">
+            <div style="text-align: center; margin: 20px 0;">
+                <h2 style="font-weight: bold; color: #333;">Olá usuário, você está vendo as métricas gerais dos silos
+                </h2>
+            </div>
+        </div>
+    </div>
 
     <!-- KPIs -->
-
     <div class="kpis">
         <div class="container">
+
 
             <div class="card">
                 <div class="info">
@@ -80,7 +87,7 @@
             <div class="card">
                 <div class="info">
                     <span class="titulo">Alertas realizados</span>
-                    <span class="dado">3</span>                
+                    <span class="dado">3</span>
                 </div>
             </div>
         </div>
@@ -89,26 +96,17 @@
     <!-- Gráficos -->
 
     <div class="graficos">
-        <div class="container_graficos">
-            <div class="grupo_graficos">
-
-                <div class="card">
-                    <canvas id="grafico_barra" width="850" height="190"></canvas>
-                </div>
-
-                <div class="card">
-                    <canvas id="grafico_linha" width="850" height="190"></canvas>
-                </div>
+        <div class="container">
+            <div class="card">
+                <canvas id="grafico_barra" width="400"></canvas>
             </div>
-
-            <div class="grafico_lateral">
-                <div class="card">
-                    <canvas id="grafico_lateral_canvas" width="200" height="400"></canvas>
-                </div>
+            <div class="card">
+                <canvas id="grafico_linha"></canvas>
             </div>
         </div>
     </div>
 
+    </main>
 
 </body>
 
@@ -124,7 +122,7 @@
             datasets: [
                 {
                     label: 'Dia em estoque',
-                    data: [10 , 30, 120, 100],
+                    data: [10, 30, 120, 100],
                     backgroundColor: ['#008000', '#9B2226', '#005F73', '#EE9B00'],
                     barThickness: 60
                 }
@@ -134,7 +132,7 @@
             responsive: true,
             plugins: {
                 legend: {
-                    display: false 
+                    display: false
                 },
                 title: {
                     display: true,
@@ -185,7 +183,7 @@
             ], datasets: [{
                 label: 'Silo A',
                 data: [
-                    1.10, 1.20, 0.80, 0.50, 1.0, 1.10, 0.90, 0.30, 0.40, 0.80, 0.40, 0.30, 0.20, 0.60, 
+                    1.10, 1.20, 0.80, 0.50, 1.0, 1.10, 0.90, 0.30, 0.40, 0.80, 0.40, 0.30, 0.20, 0.60,
                 ], borderWidth: 1,
                 backgroundColor: '#008000',
                 borderColor: '#008000'
@@ -203,7 +201,7 @@
             {
                 label: 'Silo C',
                 data: [
-                    0.50, 2.10, 4.70, 3.80, 3.10, 0.80, 1.20, 2.00, 4.20, 3.60, 0.90, 2.40, 1.00, 1.10, 
+                    0.50, 2.10, 4.70, 3.80, 3.10, 0.80, 1.20, 2.00, 4.20, 3.60, 0.90, 2.40, 1.00, 1.10,
                 ], borderWidth: 1,
                 backgroundColor: '#005F73',
                 borderColor: '#005F73'
@@ -212,8 +210,8 @@
             {
                 label: 'Silo D',
                 data: [
-                    4.80, 2.30, 1.10, 0.30, 2.90, 3.50, 1.70, 4.90, 2.50, 1.40, 0.60, 3.10, 2.20, 2.30, 
-                ],borderWidth: 1,
+                    4.80, 2.30, 1.10, 0.30, 2.90, 3.50, 1.70, 4.90, 2.50, 1.40, 0.60, 3.10, 2.20, 2.30,
+                ], borderWidth: 1,
                 backgroundColor: '#EE9B00',
                 borderColor: '#EE9B00'
             },
@@ -246,42 +244,4 @@
         }
     });
 
-    const lateral = document.getElementById('grafico_lateral_canvas');
-    new Chart(lateral, {
-        type: 'doughnut',
-        data: {
-            labels: ['Silo A', 'Silo B', 'Silo C', 'Silo D'],
-            datasets: [{
-                label: 'Percentual',
-                backgroundColor: ['#008000', '#9B2226', '#005F73', '#EE9B00'],
-                data: [30, 40, 10, 20], 
-            }]
-        },
-        options: {
-            responsive: false,
-            plugins: {
-                
-                legend: {
-                    labels: {
-                        font: {
-                            size: 12
-                        }
-                    }
-                },
-                title: {
-                    display: true,
-                    text: 'Ocupação total dos silos',
-                    color: '#222222',
-                    font: {
-                        size: 20,
-                    }
-                },
-                tooltip: {
-                    backgroundColor: '#333333',
-                    titleColor: '#ffffff',
-                    bodyColor: '#ffffff'
-                }
-            }
-        }
-    });
 </script>
