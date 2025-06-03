@@ -6,115 +6,173 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Simulador Financeiro</title>
     <link rel="stylesheet" href="./css/style_simulador.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
 
 </head>
 
 <body>
 
-    <!-- Navbar -->
-    <div class="header">
+    <!-- Cabeçalho -->
+    <header>
+        <nav class="navbar">
+            <div class="conteudo">
+                <img src="./assets/img/logo_slogan_branco.png" width="200">
+
+                <div class="links">
+                    <a href="./index.html">Home</a>
+                    <a href="./simulador.html">Simulador</a>
+                    <a href="./simulador.html">Sobre nós</a>
+                </div>
+
+                <div class="botao">
+                    <a href=""><button class="botão-nav">Login</button></a>
+                </div>
+
+            </div>
+        </nav>
+    </header>
+
+    <!-- Fim cabeçalho -->
+
+    <main>
+
+        <!-- Formulário -->
+
+        <section class="formulario">
+            <div class="container">
+                <div class="campos">
+                    <span id="tipo_silo">Qual silo você usa?</span>
+                    <select id="siloS">
+                        <option>Silo-Madeira</option>
+                        <option>Silo-Metálico</option>
+                        <option>Silo-Alvenaria</option>
+                        <option>Silo-Concreto</option>
+                    </select><br>
+                    Tamanho do armazém total (T)
+                    <input type="text" id="inputArmazem"><br>
+                    Quantidade de soja armazenada (T)
+                    <input type="text" id="inputQtdKilos"><br>
+                    <button onclick="calcular()">Calcular!</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Fim formulario -->
+
+        <!-- Simulador -->
+
+        <section class="simulador">
+            <div class="container">
+                <div class="conteudo">
+                    <h1>Titulo</h1>
+                    <span>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Qui deleniti perspiciatis pariatur
+                        cumque error sunt ab, totam iusto fugiat alias maxime vero. Eveniet ratione fugit provident.
+                        Necessitatibus beatae esse autem.
+                    </span>
+                    <br>
+                    <span>
+                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Labore illo eos voluptates laborum
+                        reiciendis eveniet totam numquam saepe, alias accusantium harum, temporibus sit quisquam! Ab
+                        officia quod tempora aspernatur corrupti.
+                    </span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Fim simulador -->
+
+        <!-- Modal -->
+
+        <section id="modalMensagem" class="modal">
+            <div class="modal-conteudo">
+                <span class="fechar" onclick="fecharModal()">&times;</span>
+                <div id="div_mensagem"></div>
+            </div>
+        </section>
+
+        <!-- Fim modal -->
+
+    </main>
+
+    
+    <!-- Footer -->
+
+    <footer class="footer">
         <div class="container">
-            <div class="logo_slogan_branco"><img src="./assets/img/logo_slogan_branco.png" alt=""></div>
-            <div class="nav">
-                <ul class="navbar">
-                    <li class="home">
-                        <a href="./index.html">Home</a>
-                    </li>
-                    <li class="simulador">
-                        <a href="./simulador.html">Simulador</a>
-                    </li>
-                </ul>
-                <a href="login.html" class="botao_login">Login</a>
+
+        </div>
+    </footer>
+
+    <div class="feito_por">
+        <div class="container">
+            <div class="conteudo">
+                <span>© 2025 Osiris</span>
             </div>
         </div>
     </div>
 
-    <!-- Formulário -->
-    <div class="formulario">
-        <div class="container">
-            <div class="campos">
-                <span id="tipo_silo">Qual silo você usa?</span>
-                <select id="siloS">
-                    <option>Silo-Madeira</option>
-                    <option>Silo-Metálico</option>
-                    <option>Silo-Alvenaria</option>
-                    <option>Silo-Concreto</option>
-                </select><br>
-                Tamanho do armazém total (T)
-                <input type="text" id="inputArmazem"><br>
-                Quantidade de soja armazenada (T)
-                <input type="text" id="inputQtdKilos"><br>
-                <button onclick="calcular()">Calcular!</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal -->
-    <div id="modalMensagem" class="modal">
-        <div class="modal-conteudo">
-            <span class="fechar" onclick="fecharModal()">&times;</span>
-            <div id="div_mensagem"></div>
-        </div>
-    </div>
-
-    <!-- Script -->
-    <script>
-        function calcular() {
-            var silo = document.getElementById("siloS").value;
-            var valorSaca = 134;
-            var pesoSaca = 60;
-            var totArmazem = Number(document.getElementById("inputArmazem").value);
-            var qtdSoja = Number(document.getElementById("inputQtdKilos").value);
-            var pct = (qtdSoja / totArmazem) * 100;
-            var valorT = ((qtdSoja * 1000) / pesoSaca) * valorSaca;
-            var mensagem = "";
-
-            if (qtdSoja == "" || totArmazem == "") {
-                alert("Os campos não podem ser vazios.")
-            } else {
-
-                if (pct > 100) {
-                    mensagem = "<strong>ERRO:</strong> O valor de soja armazenada é maior que a capacidade do armazém!";
-                } else {
-                    var pctE = "";
-
-                    if (silo == "Silo-Madeira") {
-                        pctE = "50-60%";
-                    } else if (silo == "Silo-Metálico") {
-                        pctE = "30-40%";
-                    } else if (silo == "Silo-Alvenaria") {
-                        pctE = "20-30%";
-                    } else {
-                        pctE = "15-25%";
-                    }
-
-                    mensagem += `<h3>ARMAZÉM</h3><p>Tipo: ${silo}</p>`;
-                    mensagem += `<h3>CAPACIDADE</h3><p>Capacidade atual: ${pct.toFixed(2)}%<br>Ar restante: ${(100 - pct).toFixed(2)}%<br>Capacidade de metano máxima: ${((100 - pct) * 0.05).toFixed(2)}%</p>`;
-                    mensagem += `<h3>RISCOS</h3><p>Risco estimado: ${pctE}<br>Perda estimada: R$${valorT.toFixed(2)}`;
-                }
-
-                document.getElementById("div_mensagem").innerHTML = mensagem;
-                abrirModal();
-            }
-        }
-
-        function abrirModal() {
-            document.getElementById("modalMensagem").style.display = "block";
-        }
-
-        function fecharModal() {
-            document.getElementById("modalMensagem").style.display = "none";
-        }
-
-        // Fechar modal ao clicar fora dele
-        window.onclick = function (event) {
-            const modal = document.getElementById("modalMensagem");
-            if (event.target == modal) {
-                fecharModal();
-            }
-        }
-    </script>
+    <!-- Fim footer -->
 
 </body>
 
 </html>
+
+<script>
+    function calcular() {
+        var silo = document.getElementById("siloS").value;
+        var valorSaca = 134;
+        var pesoSaca = 60;
+        var totArmazem = Number(document.getElementById("inputArmazem").value);
+        var qtdSoja = Number(document.getElementById("inputQtdKilos").value);
+        var pct = (qtdSoja / totArmazem) * 100;
+        var valorT = ((qtdSoja * 1000) / pesoSaca) * valorSaca;
+        var mensagem = "";
+
+        if (qtdSoja == "" || totArmazem == "") {
+            alert("Os campos não podem ser vazios.")
+        } else {
+
+            if (pct > 100) {
+                mensagem = "<strong>ERRO:</strong> O valor de soja armazenada é maior que a capacidade do armazém!";
+            } else {
+                var pctE = "";
+
+                if (silo == "Silo-Madeira") {
+                    pctE = "50-60%";
+                } else if (silo == "Silo-Metálico") {
+                    pctE = "30-40%";
+                } else if (silo == "Silo-Alvenaria") {
+                    pctE = "20-30%";
+                } else {
+                    pctE = "15-25%";
+                }
+
+                mensagem += `<h3>ARMAZÉM</h3><p>Tipo: ${silo}</p>`;
+                mensagem += `<h3>CAPACIDADE</h3><p>Capacidade atual: ${pct.toFixed(2)}%<br>Ar restante: ${(100 - pct).toFixed(2)}%<br>Capacidade de metano máxima: ${((100 - pct) * 0.05).toFixed(2)}%</p>`;
+                mensagem += `<h3>RISCOS</h3><p>Risco estimado: ${pctE}<br>Perda estimada: R$${valorT.toFixed(2)}`;
+            }
+
+            document.getElementById("div_mensagem").innerHTML = mensagem;
+            abrirModal();
+        }
+    }
+
+    function abrirModal() {
+        document.getElementById("modalMensagem").style.display = "block";
+    }
+
+    function fecharModal() {
+        document.getElementById("modalMensagem").style.display = "none";
+    }
+
+    // Fechar modal ao clicar fora dele
+    window.onclick = function (event) {
+        const modal = document.getElementById("modalMensagem");
+        if (event.target == modal) {
+            fecharModal();
+        }
+    }
+</script>

@@ -31,8 +31,6 @@
                         <option>Silos</option>
                         <option value="../telas_dashbboard/silo_A.html">Silo A</option>
                         <option value="../telas_dashbboard/silo_B.html">Silo B</option>
-                        <option value="../telas_dashbboard/silo_C.html">Silo C</option>
-                        <option value="../telas_dashbboard/silo_D.html">Silo D</option>
                     </select>
                 </li>
             </ul>
@@ -74,21 +72,6 @@
                     <span class="dado">0.20 | 12:00</span>
                 </div>
             </div>
-            
-            <div class="card">
-                <div class="info">
-                    <span class="titulo">Total de alertas</span>
-                    <span class="dado">0</span>                
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="info">
-                    <span class="titulo">Status do Sensor</span>
-                    <span class="dado">Em funcionamento</span>
-                </div>
-            </div>
-
         </div>
     </div>
 
@@ -105,36 +88,47 @@
         </div>
     </div>
 
-
 </body>
 
 </html>
 
 <script>
-    const ctx = document.getElementById('grafico_barra');
+     const grafico1 = document.getElementById('grafico_barra');
 
-    new Chart(ctx, {
-        type: 'bar',
+   new Chart(grafico1, {
+        type: 'line',
         data: {
-            labels: ['17/04', '18/04', '19/04', '20/04', '21/04', '22/04', '23/04'],
-            datasets: [
-                {
-                    label: 'Dia em estoque',
-                    data: [15000 ,15000 , 15000, 12000, 12000, 6000, 2000],
-                    backgroundColor: ['#9B2226'],
-                    barThickness: 60
-                }
+            labels: [
+                '29/04', '30/04', '31/04', '01/05', '02/05', '03/05', '04/05', '05/05',
+                '06/05', '07/05', '08/05', '09/05', '10/05', '11/05', '12/05', '13/05',
+                '14/05', '15/05', '16/05', '17/05', '18/05', '19/05', '20/05', '21/05', 
+                '22/05', '23/05', '24/05', '25/05', '26/05', '27/05', '28/05', '29/05'
+            ], datasets: [{
+                label: 'Silo B',
+                data: [
+                1.10, 1.20, 0.80, 0.50, 1.0, 1.10, 0.90, 0.30, 0.40, 0.80, 0.40, 0.30, 0.20, 0.60, 
+                0.60, 1.00, 0.90, 0.70, 0.80, 1.10, 0.50, 0.60, 0.90, 0.40,  
+                1.00, 0.80, 0.70, 0.60, 0.90, 0.50, 0.80, 1.10, 0.60, 0.40
+
+                ], borderWidth: 1,
+                backgroundColor: '#d00000',
+                borderColor: '#d00000'
+            },
             ]
         },
         options: {
             responsive: true,
             plugins: {
                 legend: {
-                    display: false 
+                    labels: {
+                        font: {
+                            size: 12
+                        }
+                    }
                 },
                 title: {
                     display: true,
-                    text: 'Nível de armazenamento (Semanal)',
+                    text: 'Percentual máximo captado por dia (nos ultimos 30 dias)',
                     color: '#222222',
                     font: {
                         size: 20,
@@ -145,48 +139,29 @@
                     titleColor: '#ffffff',
                     bodyColor: '#ffffff'
                 }
-            },
-            scales: {
-                x: {
-                    ticks: {
-                        color: '#111111',
-                    },
-                    grid: {
-                        display: false
-                    }
-                },
-                y: {
-                    ticks: {
-                        color: '#111111'
-                    },
-                    grid: {
-                        display: false
-                    }
-                }
             }
         }
     });
 
 
+    const grafico2 = document.getElementById('grafico_linha');
 
-    const lugar = document.getElementById('grafico_linha');
-
-    new Chart(lugar, {
+    new Chart(grafico2, {
         type: 'line',
         data: {
             labels: [
                 '00:00', '01:00', '02:00', '03:00', '04:00', '05:00', '06:00', '07:00',
                 '08:00', '09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00',
                 '16:00', '17:00', '18:00', '19:00', '20:00', '21:00', '22:00', '23:00'
-            ], datasets: [
-            {
+            ], datasets: [{
                 label: 'Silo B',
                 data: [
-                    1.90, 2.20, 2.90, 3.10, 3.15, 2.90, 1.90, 2.30, 2.40, 1.80, 2.40, 2.30, 1.20, 2.50,
+                    1.10, 1.20, 0.80, 0.50, 1.0, 1.10, 0.90, 0.30, 0.40, 0.80, 0.40, 0.30, 0.20, 0.60, 
                 ], borderWidth: 1,
-                backgroundColor: '#9B2226',
-                borderColor: '#9B2226'
-            }]
+                backgroundColor: '#d00000',
+                borderColor: '#d00000'
+            },
+            ]
         },
         options: {
             responsive: true,

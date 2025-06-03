@@ -31,8 +31,6 @@
                         <option>Silos</option>
                         <option value="./telas_dashbboard/silo_A.html">Silo A</option>
                         <option value="./telas_dashbboard/silo_B.html">Silo B</option>
-                        <option value="./telas_dashbboard/silo_C.html">Silo C</option>
-                        <option value="./telas_dashbboard/silo_D.html">Silo D</option>
                     </select>
                 </li>
             </ul>
@@ -55,41 +53,34 @@
     <div class="kpis">
         <div class="container">
 
-
             <div class="card">
                 <div class="info">
-                    <span class="titulo">Silos em estado crítico</span>
-                    <span class="dado"> Silo B | Silo D </span>
+                    <span class="titulo">Percentual máximo de gás metano captado</span>
+                    <span class="dado">4.90% | Silo D</span>
                 </div>
             </div>
 
-            <div class="card">
+              <div class="card">
                 <div class="info">
-                    <span class="titulo">Percentual de gás captado no dia</span>
-                    <span class="dado">4.90%</span>
+                    <span class="titulo">Percentual mínimo de gás metano captado</span>
+                    <span class="dado">0.20% | Silo A</span>
                 </div>
             </div>
+            
+            <div class="card">
+               <div class="info">
+                   <span class="titulo">Quantidades de silos monitorados</span>
+                   <span class="dado">2</span>
+               </div>
+           </div>
 
             <div class="card">
                 <div class="info">
-                    <span class="titulo">Tempo médio em risco</span>
-                    <span class="dado">1h</span>
+                    <span class="titulo">Quantidades de silos no local</span>
+                    <span class="dado">10</span>
                 </div>
             </div>
 
-            <div class="card">
-                <div class="info">
-                    <span class="titulo">Status geral dos sensores</span>
-                    <span class="dado">100% </span>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="info">
-                    <span class="titulo">Alertas realizados</span>
-                    <span class="dado">3</span>
-                </div>
-            </div>
         </div>
     </div>
 
@@ -113,30 +104,42 @@
 </html>
 
 <script>
-    const ctx = document.getElementById('grafico_barra');
+     const grafico1 = document.getElementById('grafico_barra');
 
-    new Chart(ctx, {
-        type: 'bar',
+   new Chart(grafico1, {
+        type: 'line',
         data: {
-            labels: ['Silo A', 'Silo B', 'Silo C', 'Silo D'],
-            datasets: [
-                {
-                    label: 'Dia em estoque',
-                    data: [10, 30, 120, 100],
-                    backgroundColor: ['#008000', '#9B2226', '#005F73', '#EE9B00'],
-                    barThickness: 60
-                }
+            labels: [
+                '29/04', '30/04', '31/04', '01/05', '02/05', '03/05', '04/05', '05/05',
+                '06/05', '07/05', '08/05', '09/05', '10/05', '11/05', '12/05', '13/05',
+                '14/05', '15/05', '16/05', '17/05', '18/05', '19/05', '20/05', '21/05', 
+                '22/05', '23/05', '24/05', '25/05', '26/05', '27/05', '28/05', '29/05'
+            ], datasets: [{
+                label: 'Silo A',
+                data: [
+                1.10, 1.20, 0.80, 0.50, 1.0, 1.10, 0.90, 0.30, 0.40, 0.80, 0.40, 0.30, 0.20, 0.60, 
+                0.60, 1.00, 0.90, 0.70, 0.80, 1.10, 0.50, 0.60, 0.90, 0.40,  
+                1.00, 0.80, 0.70, 0.60, 0.90, 0.50, 0.80, 1.10, 0.60, 0.40
+
+                ], borderWidth: 1,
+                backgroundColor: '#3f88c5',
+                borderColor: '#3f88c5'
+            },
             ]
         },
         options: {
             responsive: true,
             plugins: {
                 legend: {
-                    display: false
+                    labels: {
+                        font: {
+                            size: 12
+                        }
+                    }
                 },
                 title: {
                     display: true,
-                    text: 'Silos e dias em armazenagem',
+                    text: 'Percentual máximo captado por dia (nos ultimos 30 dias)',
                     color: '#222222',
                     font: {
                         size: 20,
@@ -147,29 +150,9 @@
                     titleColor: '#ffffff',
                     bodyColor: '#ffffff'
                 }
-            },
-            scales: {
-                x: {
-                    ticks: {
-                        color: '#111111',
-                    },
-                    grid: {
-                        display: false
-                    }
-                },
-                y: {
-                    ticks: {
-                        color: '#111111'
-                    },
-                    grid: {
-                        display: false
-                    }
-                }
             }
         }
     });
-
-
 
     const lugar = document.getElementById('grafico_linha');
 
@@ -185,8 +168,8 @@
                 data: [
                     1.10, 1.20, 0.80, 0.50, 1.0, 1.10, 0.90, 0.30, 0.40, 0.80, 0.40, 0.30, 0.20, 0.60,
                 ], borderWidth: 1,
-                backgroundColor: '#008000',
-                borderColor: '#008000'
+                backgroundColor: '#3f88c5',
+                borderColor: '#3f88c5'
             },
 
             {
@@ -194,26 +177,8 @@
                 data: [
                     1.90, 2.20, 2.90, 3.10, 3.15, 2.90, 1.90, 2.30, 2.40, 1.80, 2.40, 2.30, 1.20, 2.50,
                 ], borderWidth: 1,
-                backgroundColor: '#9B2226',
-                borderColor: '#9B2226'
-            },
-
-            {
-                label: 'Silo C',
-                data: [
-                    0.50, 2.10, 4.70, 3.80, 3.10, 0.80, 1.20, 2.00, 4.20, 3.60, 0.90, 2.40, 1.00, 1.10,
-                ], borderWidth: 1,
-                backgroundColor: '#005F73',
-                borderColor: '#005F73'
-            },
-
-            {
-                label: 'Silo D',
-                data: [
-                    4.80, 2.30, 1.10, 0.30, 2.90, 3.50, 1.70, 4.90, 2.50, 1.40, 0.60, 3.10, 2.20, 2.30,
-                ], borderWidth: 1,
-                backgroundColor: '#EE9B00',
-                borderColor: '#EE9B00'
+                backgroundColor: '#d00000',
+                borderColor: '#d00000'
             },
             ]
         },

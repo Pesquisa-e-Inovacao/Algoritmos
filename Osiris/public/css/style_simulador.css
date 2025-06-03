@@ -1,9 +1,10 @@
 /* Configurações padrão */
 
-body {
+* {
     margin: 0;
-    font-family: sans-serif;
-    background-color: var(--cinza);
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Roboto", sans-serif;
 }
 
 :root {
@@ -11,106 +12,73 @@ body {
     --cinza: #1C1F20;
 }
 
-/* cabeçalho da página */
-
-.header {
-    background-color: black;
-    border-bottom: 1px solid #1C1F20;
-    position: fixed;
-    width: 100%;
-}
-
-.header .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 120px;
-}
-
-.nav {
-    display: flex;
-    justify-content: space-between;
-}
-
-.header .logo_slogan_branco {
-    display: flex;
-    justify-content: flex-start;
-    height: 80px;
-}
+/* Cabeçalho */
 
 .navbar {
+    background-color: #222;
+    width: 100%;
+    height: 80px;
+    position: absolute;
+}
+
+.navbar .conteudo {
+    width: 85%;
+    margin: auto;
     display: flex;
+    flex-direction: row;
+    align-items: center;
     justify-content: space-between;
+}
+
+.navbar .conteudo img {
+    width: 220px;
+}
+
+.links {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    margin: auto;
+}
+
+.links a {
+    display: flex;
+    flex-direction: row;
     color: #fff;
-    list-style: none;
-    width: 150px;
-}
-
-.home {
-    color: #fff;
-}
-
-.home:hover {
-    transition: 0.5;
-    color: #fff;
-}
-
-.simulador {
-    color: var(--amerela);
-}
-
-.simulador:hover {
-    transition: 0.5;
-    color: #ffffffd7;
-}
-
-.dashboard {
-    color: #fff;
-}
-
-.dashboard:hover {
-    transition: 0.5;
-    color: #ffffffd7;
-}
-
-a {
-    color: var(--amarela);
     text-decoration: none;
 }
 
-.botao_login{
-    height: 40px;
-    width: 120px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 15px;
-    background-color: var(--amerela);
+.botao button {
+    width: 80px;
+    height: 25px;
+    border-radius: 5px;
     border: none;
-    margin-left: 10%;
+    background-color: #fff;
     cursor: pointer;
-    color: #fff;
 }
 
-.botao_login:hover {
-    background-color: #dfad1a
+/* Fim cabeçalho */
+
+main {
+    width: 85%;
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+    justify-content: center;
+    gap: 50px;
 }
 
 /* Simulador Financeiro */
 
 
-.formulario {
-    height: 100vh; /* pega 100% da altura da janela */
+.formulario .container {
+    margin-top: 150px;
     display: flex;
-    justify-content: center; /* alinha horizontalmente */
-    align-items: center;     /* alinha verticalmente */
+    justify-content: center; 
+    align-items: center;     
 }
 
-.formulario .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+.formulario
 
 .campos {
     display: flex;
@@ -121,9 +89,10 @@ a {
     width: 400px;
     padding: 20px;
     gap: 10px;
-    background-color: #f5f5f5;
+    background-color: #222;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    color: #fff;
 }
 
 .campos input {
@@ -131,7 +100,7 @@ a {
     height: 20px;
     width: 300px;
     border-radius: 10px;
-    border: 1px solid #000;
+    border: 1px solid #fff;
 }
 
 .campos select {
@@ -157,8 +126,23 @@ a {
 .campos button:hover {
     background-color: #dfad1a
 
-/* Modal */
 }
+
+.simulador .container {
+    margin-top: 150px;
+    display: flex;
+    justify-content: center; 
+    align-items: center;   
+}
+
+.simulador .conteudo {
+    display: flex;
+    width: 400px;
+    flex-direction: column;
+}
+
+/* Modal */
+
 #meuModal {
     display: none; /* Escondido por padrão */
     position: fixed;
@@ -222,3 +206,65 @@ a {
 .fechar:hover {
     color: #000;
 }
+
+
+/* Footer */
+
+.footer .container {
+    display: flex;
+    width: 100%;
+    height: 150px;
+    background-color: #222;
+    margin-top: 80px;
+}
+
+.footer .logo {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    margin-left: 50px;
+}
+
+
+.footer .redes {
+    display: flex;
+    flex-direction: row;
+    margin-left: 20%;
+    gap: 35px;
+}
+
+.footer .conteudo {
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+    margin-top: 35px;
+    color: #fff;
+    text-align: center;
+}
+
+
+.footer .conteudo a {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: #fff;
+    margin-bottom: 15px;
+    width: 250px;
+} 
+
+.feito_por .container {
+    width: 100%;
+}
+
+.feito_por .conteudo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    background-color: #000;
+    color: #fff;
+}
+
+/* Fim footer  */
+
+

@@ -4,257 +4,221 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Osiris-Tela inicial</title>
+    <title>Home</title>
     <link rel="stylesheet" href="./css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
 </head>
 
 <body>
 
-    <!-- Navbar -->
-    <div class="header">
-        <div class="container">
-            <div class="logo_slogan_branco"><img src="./assets/img/logo_slogan_branco.png" alt=""></div>
-            <div class="nav">
-                <ul class="navbar">
-                    <li class="home">
-                        <a href="./index.html">Home</a>
-                    </li>
-                    <li class="simulador">
-                        <a href="./simulador.html">Simulador</a>
-                    </li>
-                </ul>
-                <a href="login.html" class="botao_login">Login</a>
+    <!-- Cabeçalho -->
+
+    <header>
+        <nav class="navbar">
+            <div class="conteudo">
+                <img src="./assets/img/logo_slogan_branco.png">
+
+                <div class="links">
+                    <a href="./index.html">Home</a>
+                    <a href="./simulador.html">Simulador</a>
+                </div>
+
+                <div class="botao">
+                    <a href="./login.html"><button class="botão-nav">Login</button></a>
+                </div>
+
             </div>
-        </div>
-    </div>
+        </nav>
+    </header>
+
+    <!-- Fim cabeçalho -->
 
     <!-- Banner -->
-    <div class="banner">
-        <div class="container">
-            <p><span class="t1"></span>
-                <span class="t2">Monitoramento Inteligente de Gás Metano no Armazenamento de Grãos</span>
-                <br>
-                <span class="t3">A Osiris oferece soluções precisas para detectar e monitorar o gás metano no
-                    armazenamento de soja.</span>
-                    <div class="logocentro"><img src="./assets/img/logo_slogan_branco.png" alt=""></div>
-            </p>
+
+    <section class="banner">
+        <img src="./assets/img/banner.png" alt="">
+
+        <div class="texto">
+            <h2>Monitoramento Inteligente de Gás Metano no Armazenamento de Grãos</h2>
+            <span>A Osiris oferece soluções precisas para detectar e monitorar o gás metano no armazenamento de
+                soja</span>
         </div>
-    </div>
+    </section>
 
-  
+    <!-- Fim banner -->
 
-    <!-- Beneficios -->
- 
-    <div class="beneficios">
-        <div class="container">
-            <p><span class="texto_beneficios2">MONITORAR O METANO É PROTEGER SUA PRODUÇÃO</span></p>
-        </div>
-    </div>
+    <!-- Conteudo principal -->
+    <main>
 
-    <!-- Cards Beneficios -->
-    <div class="card_beneficios">
-        <div class="container">
+        <!-- Introdução -->
 
+        <section class="titulo">
+            <h4>Veja como podemos</h4>
+            <h2><span>Proteger</span> o seu armazenamento</h2>
+        </section>
+
+        <section class="introducao">
+            <div class="container">
+                <div class="imagens">
+                    <img src="./assets/img/banner.png">
+                </div>
+
+                <div class="texto">
+                    <h2>Osiris: Inovação e Segurança para o Agronegócio</h2>
+                    <span>A <strong>Osiris</strong> é uma empresa de tecnologia dedicada a impulsionar a segurança e a
+                        eficiência no
+                        agronegócio. Com foco em soluções inovadoras, desenvolvemos sistemas de monitoramento
+                        inteligentes para proteger o seu investimento, a sua produção e, acima de tudo, vidas. Nossa
+                        missão é oferecer tranquilidade aos produtores rurais, garantindo ambientes de armazenamento de
+                        grãos mais seguros e produtivos através da detecção precoce de riscos.</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Fim introdução -->
+
+        <!-- Perigo -->
+
+        <section class="perigo">
+            <div class="container">
+                <div class="card">
+
+                    <div class="texto-perigo">
+                        <h1>Por que o Metano é uma Ameaça em Silos de Soja?</h1>
+                        <p>O gás metano <strong>CH-4</strong> é um subproduto natural da decomposição de matéria
+                            orgânica, incluindo
+                            grãos armazenados em silos. Embora inodoro e incolor, sua presença em concentrações elevadas
+                            é extremamente perigosa:</p>
+                        <ul>
+                            <li><strong>Risco de Explosão:</strong> O metano é um gás altamente inflamável. Em ambientes
+                                fechados, como silos, o acúmulo pode levar a explosões devastadoras, causando perdas
+                                materiais e, tragicamente, humanas.</li>
+                            <li><strong>Asfixia e Intoxicação:</strong> Em altas concentrações, o metano desloca o
+                                oxigênio, criando um ambiente anóxico. Isso pode levar à asfixia para trabalhadores que
+                                adentrem o silo sem o equipamento de proteção adequado.</li>
+                            <li><strong>Danos à Qualidade dos Grãos:</strong> A decomposição que libera metano também
+                                pode indicar deterioração dos grãos, comprometendo a qualidade e gerando perdas
+                                significativas na safra armazenada.</li>
+                            <li><strong>Impacto Ambiental:</strong> O metano é um potente gás de efeito estufa.
+                                Monitorar e mitigar seu vazamento contribui para práticas agrícolas mais sustentáveis.
+                            </li>
+                        </ul>
+                        <p>A Osiris oferece a solução para mitigar esses riscos, transformando seu silo em um
+                            ambiente mais seguro e produtivo.</p>
+                    </div>
+                    <div class="imagem-perigo">
+                        <img src="./assets/img/silos-riscos.jpg" alt="Silo de grãos com fumaça ou aviso de perigo">
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Fim perigo -->
+
+        <!-- Como funciona -->
+
+        <section class="titulo">
+            <h4>Veja como podemos</h4>
+            <h2><span>Proteger</span> o seu armazenamento</h2>
+        </section>
+
+        <section class="como-funciona">
+            <div class="card-container">
+                <div class="card">
+                    <p> <span class="titulo">Monitoramento</span></p>
+                    <img class="img" src="./assets/img/card_como_funciona1.png" alt="">
+                    <span class="texto">Sensores instalados no ambiente detectam a presença de metano no ar em tempo
+                        real.</span>
+                </div>
+            </div>
+
+
+            <div class="card-container">
+                <div class="card">
+                    <p> <span class="titulo">Coleta de dados</span></p>
+                    <img class="img" src="./assets/img/card_como_funciona2.png" alt="">
+                    <span class="texto">As informações captadas pelos sensores são processadas
+                        automaticamente.</span>
+                </div>
+            </div>
+
+            <div class="card-container">
+                <div class="card">
+                    <p> <span class="titulo">Alerta imediato</span></p>
+                    <img class="img" src="./assets/img/card_como_funciona3.png" alt="">
+                    <span class="texto">Quando os níveis de gás ultrapassam o limite seguro, um alerta é emitido ao
+                        responsável.</span>
+                </div>
+            </div>
+
+            <div class="card-container">
+                <div class="card">
+                    <p></span> <span class="titulo">Acompanhamento</span></p>
+                    <img class="img" src="./assets/img/card_como_funciona4.png" alt="">
+                    <span class="texto">Os dados ficam disponíveis em um painel visual, facilitando a tomada de
+                        decisões.</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Fim como funciona -->
+
+        <!-- Beneficios -->
+
+        <section class="beneficios">
             <div class="card">
-                
+
+                <h1>Benefícios do sistema Osiris</h1>
+
                 <div class="item" id="item1" onclick="card1()">
-                    <h2>1 Segurança</h2>
+                    <h2>Segurança</h2>
                     <span>Reduz riscos de explosões e intoxicações causadas pelo acúmulo de metano.</span>
                 </div>
 
                 <div class="item" id="item2" onclick="card2()">
-                    <h2>2 Qualidade</h2>
+                    <h2>Qualidade</h2>
                 </div>
 
                 <div class="item" id="item3" onclick="card3()">
-                    <h2>3 Eficiência</h2>
+                    <h2>Eficiência</h2>
                 </div>
 
                 <div class="item" id="item4" onclick="card4()">
-                    <h2>4 Dados em tempo real</h2>
+                    <h2>Dados em tempo real</h2>
                 </div>
             </div>
 
-            <div class="img" >
-                <img id="img_beneficios" src="https://blog.aegro.com.br/wp-content/uploads/2019/01/armazenagem-de-gr%C3%A3os.jpg"
-                    alt="">
-            </div>
-        </div>
-    </div>
-
-    <div class="como_funciona">
-        <div class="container">
-            <p><span class="texto_como_funciona1">COMO FUNCIONA O SISTEMA OSIRIS</span></p>
-            <p><span class="texto_como_funciona2">Nosso sistema foi criado para tornar o monitoramento do gás metano mais acessível, prático e confiável no armazenamento de grãos de soja.</span></p>
-        </div>
-    </div>
-
-    <div class="cards_como_funciona">
-        <div class="container">
-            <div class="card">
-                <p><span class="numero">1.</span> <span class="titulo" >MONITORAMENTO</span></p>
-                <img class="img" src="./assets/img/card_como_funciona1.png" alt="">
-                <p><span class="texto">Sensores instalados no ambiente detectam a presença de metano no ar em tempo real.</span></p>
-            </div>
-
-            <div class="card">
-                <p><span class="numero">2.</span> <span class="titulo" >COLETA DE DADOS</span></p>
-                <img class="img" src="./assets/img/card_como_funciona2.png" alt="">
-                <p><span class="texto">As informações captadas pelos sensores são processadas automaticamente.</span></p>
-            </div>
-
-            <div class="card">
-                <p><span class="numero">3.</span> <span class="titulo" >ALERTA IMEDIATO</span></p>
-                <img class="img" src="./assets/img/card_como_funciona3.png" alt="">
-                <p><span class="texto">Quando os níveis de gás ultrapassam o limite seguro, um alerta é emitido ao responsável.</span></p>
-            </div>
-
-            <div class="card">
-                <p><span class="numero">4.</span> <span class="titulo" >ACOMPANHAMENTO</span></p>
-                <img class="img" src="./assets/img/card_como_funciona4.png" alt="">
-                <p><span class="texto">Os dados ficam disponíveis em um painel visual, facilitando a tomada de decisões.</span></p>
-            </div>
-        </div>
-    </div>
-
-    <div class="sobre">
-        <div class="container">
-            <div class="texto">
-            <p>
-                <span class="sobre_titulo">SOBRE A OSIRIS</span>
-                <BR>
-                <span class="sobre_texto">A Osiris é uma empresa especializada em soluções tecnológicas para o agronegócio, com foco no monitoramento inteligente do gás metano durante o armazenamento de grãos de soja. Nosso compromisso é levar mais segurança, eficiência e inovação ao campo por meio de sensores de alta precisão e sistemas acessíveis. Acreditamos que tecnologia e agricultura caminham juntas rumo a um futuro mais sustentável e produtivo.</span>
-            </p>
-            </div> 
-            <br>
             <div class="imagem">
-                <div class="img">
-                    <img id="img_dashboard" src="./assets/img/pc.png" width="500">
-                </div>
+                <img id="img_beneficios"
+                    src="https://blog.aegro.com.br/wp-content/uploads/2019/01/armazenagem-de-gr%C3%A3os.jpg" alt="">
             </div>
-        </div>
-    </div>
+        </section>
+    </main>
 
-    <div class="valores">
+    <!-- Fim conteudo principal -->
+
+    <!-- Footer -->
+
+    <footer class="footer">
         <div class="container">
 
-            <div class="card_valores">
-                
-                <img id="img_valores" src="./assets/img/sobre_1.png" alt="">
-
-                <p>
-                    <span class="valores_titulo"> INOVAÇÃO</span>
-                    <span class="valores_texto">Estamos sempre à frente, implementando soluções tecnológicas que transformam o monitoramento agrícola em uma experiência mais precisa, eficiente e inteligente.</span>
-                </p>
-            </div>
-
-            <div class="card_valores">
-
-                <img id="img_valores" src="./assets/img/sobre_2.png" alt="">
-
-                <p>
-                    <span class="valores_titulo">SEGURANÇA</span>
-                    <span class="valores_texto">Protegemos não apenas os grãos, mas toda a cadeia de armazenamento. Nosso sistema atua 24 horas, garantindo confiança e estabilidade ao produtor rural.</span>
-                </p>
-            </div>
-
-            <div class="card_valores">
-                
-                <img id="img_valores" src="./assets/img/sobre_3.png" alt="">
-
-                <p>
-                    <span class="valores_titulo">SUSTENTABILIDADE</span>
-                    <span class="valores_texto">Unimos tecnologia e consciência ambiental para promover um agronegócio mais limpo, com menos perdas e mais responsabilidade com o futuro do planeta.</span>
-                </p>
-            </div>
-
-            <div class="card_valores">
-                
-                <img id="img_valores" src="./assets/img/sobre_4.png" alt="">
-
-                <p>
-                    <span class="valores_titulo">COMPROMISSO</span>
-                    <span class="valores_texto">Mais do que fornecer uma solução, assumimos um papel ativo na rotina do campo. Estamos ao lado de quem planta, colhe e movimenta o agronegócio brasileiro.</span>
-                </p>
-            </div>
         </div>
-    </div>
+    </footer>
 
-    <div class="contato">
-        <div class="container">    
-            <p><span class="contato_titulo">MENSAGEM RÁPIDA</span></p>
-            <p><span class="contato_texto">Queremos ouvir você. Seja para dúvidas, orçamentos ou parcerias, estamos sempre disponíveis para conversar.</span></p>
-        </div>
-    </div>
-
-    <div class="card_contato">
+    <div class="feito_por">
         <div class="container">
-            <div class="card">
-                <p>CONTATO</p>
-        
-                    <label for="ipt_nome">
-                        Nome:
-                        <input type="text" id="ipt_nome">
-                    </label>
-        
-                    <label for="ipt_email">
-                        Email:
-                        <input type="text" id="ipt_email">
-                    </label>
-
-                    <label for="area_assunto">
-                        Assunto:
-                        <textarea name="assunto" id="area_assunto"></textarea>
-                    </label>
-
-                    <button onclick="">Enviar</button>
-        
+            <div class="conteudo">
+                <span>© 2025 Osiris</span>
             </div>
         </div>
     </div>
-    <hr class="linha-preta2">
 
-      <!-- Imagens e texto Parceiros -->
-      <div class="parceiros">
-        <div class="container">
-            <p><span class="texto_parceiros2">PARCEIROS</span></p>
-            
-            <div class="imagens_parceiros">
-                <img id="empresa1" src="./assets/img/eclipseed-removebg-preview.png">
-                <img id="empresa2" src="">
-            </div>
-        </div>
-    </div>
-    <hr class="linha-preta">
-    <div class="footer">
-        <div class="container">
-            <div class="elementos">
-                <img id="img" src="./assets/img/logo_slogan_preto.png" alt="">
-                <div class="ancoras">
-                <div class="links">
-                    <span class="links_rapidos">Links-Rapidos</span>
+    <!-- Fim footer -->
 
-                    <li id="links_rapidos">
-                        <a href="#">Home</a>
-                    
-                        <a href="simulador.html">Simulador</a>
-                   
-                    </li>
-                </div>
-
-                <div class="contato">
-                    <span class="contato_footer">Contato</span>
-                    <li id="contato_footer">
-                        <a>osiris@hotmail.com</a>
-        
-                        <a> +55 (11) 98765-4321</a>
-                    </li>
-                </div>
-            </div> 
-            </div>
-        </div>
-    </div>
-    
 </body>
 
 </html>
@@ -262,13 +226,13 @@
 <script>
     function card1() {
         item1.innerHTML =
-            `<h2>1 Segurança</h2> <br>
+            `<h2>Segurança</h2> <br>
         <span>Reduz riscos de explosões e intoxicações causadas pelo acúmulo de metano.</span>
         `;
 
-        item2.innerHTML = `<h2>2 Qualidade</h2>`;
-        item3.innerHTML = `<h2>3 Eficiência</h2>`;
-        item4.innerHTML = `<h2>4 Dados em Tempo Real</h2>`;
+        item2.innerHTML = `<h2>Qualidade</h2>`;
+        item3.innerHTML = `<h2>Eficiência</h2>`;
+        item4.innerHTML = `<h2>Dados em Tempo Real</h2>`;
 
         img_beneficios.src = `https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHp1TvJtqvU0hHYwjyNmgyy963cAJUi9tgEg&s`;
 
@@ -276,36 +240,36 @@
 
     function card2() {
         item2.innerHTML =
-            `<h2>2 Qualidade</h2> <br>
+            `<h2>Qualidade</h2> <br>
         <span>Preserva a integridade dos grãos durante o armazenamento.</span>
         `;
-        item1.innerHTML = '<h2>1 Segurança</h2>';
-        item3.innerHTML = `<h2>3 Eficiência</h2>`;
-        item4.innerHTML = `<h2>4 Dados em Tempo Real</h2>`;
+        item1.innerHTML = '<h2>Segurança</h2>';
+        item3.innerHTML = `<h2>Eficiência</h2>`;
+        item4.innerHTML = `<h2>Dados em Tempo Real</h2>`;
 
         img_beneficios.src = `https://rehagro.com.br/blog/wp-content/uploads/2019/12/estadio-fenologico-soja.jpg`;
     }
 
     function card3() {
         item3.innerHTML =
-            `<h2>3 Eficiência</h2> <br>
+            `<h2>Eficiência</h2> <br>
         <span>Monitora em tempo real e facilita a tomada de decisões.</span>
         `;
-        item1.innerHTML = '<h2>1 Segurança</h2>';
-        item2.innerHTML = `<h2>2 Qualidade</h2>`;
-        item4.innerHTML = `<h2>4 Dados em Tempo Real</h2>`;
+        item1.innerHTML = '<h2>Segurança</h2>';
+        item2.innerHTML = `<h2>Qualidade</h2>`;
+        item4.innerHTML = `<h2>Dados em Tempo Real</h2>`;
 
         img_beneficios.src = `./assets/img/beneficio_3.png`;
     }
 
     function card4() {
         item4.innerHTML =
-            `<h2>4 Dados em Tempo Real</h2> <br>
+            `<h2>Dados em Tempo Real</h2> <br>
         <span>Relatórios claros e acessíveis via Dashboard.</span>
         `;
-        item1.innerHTML = '<h2>1 Segurança</h2>';
-        item2.innerHTML = `<h2>2 Qualidade</h2>`;
-        item3.innerHTML = `<h2>3 Eficiência</h2>`;
+        item1.innerHTML = '<h2>Segurança</h2>';
+        item2.innerHTML = `<h2>Qualidade</h2>`;
+        item3.innerHTML = `<h2>Eficiência</h2>`;
 
         img_beneficios.src = `./assets/img/dashboard.png`;
     }

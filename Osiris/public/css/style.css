@@ -1,8 +1,10 @@
 /* Configurações padrão */
 
-body {
+* {
     margin: 0;
-    font-family: sans-serif;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Roboto", sans-serif;
 }
 
 :root {
@@ -10,540 +12,336 @@ body {
     --cinza: #1C1F20;
 }
 
-/* cabeçalho da página */
 
-.header {
-    background-color: black;
-    border-bottom: 1px solid #1C1F20;
-    position: fixed;
-    width: 100%;
-}
-
-.header .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 120px;
-}
-
-.nav {
-    display: flex;
-    justify-content: space-between;
-}
-
-.header .logo_slogan_branco {
-    display: flex;
-    justify-content: flex-start;
-    height: 80px;
-}
+/* Cabeçalho */
 
 .navbar {
+    background-color: transparent;
+    width: 100%;
+    height: 80px;
+    z-index: 2;
+    position: absolute;
+    margin-top: 10px;
+}
+
+.navbar .conteudo {
+    width: 85%;
+    margin: auto;
     display: flex;
+    flex-direction: row;
+    align-items: center;
     justify-content: space-between;
+}
+
+.navbar .conteudo img {
+    width: 220px;
+}
+
+.links {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    margin: auto;
+}
+
+.links a {
+    display: flex;
+    flex-direction: row;
     color: #fff;
-    list-style: none;
-    width: 150px;
-}
-
-.home {
-    color: var(--amerela);
-}
-
-.home:hover {
-    transition: 0.5;
-    color: #fff;
-}
-
-.simulador {
-    color: #fff;
-
-}
-
-.simulador:hover {
-    transition: 0.5;
-    color: #ffffffd7;
-}
-
-.dashboard {
-    color: #fff;
-}
-
-.dashboard:hover {
-    transition: 0.5;
-    color: #ffffffd7;
-}
-
-a {
-    color: var(--amerela);
     text-decoration: none;
 }
 
-.botao_login{
-    height: 40px;
-    width: 120px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 15px;
-    background-color: var(--amerela);
+.botao button {
+    width: 80px;
+    height: 25px;
+    border-radius: 5px;
     border: none;
-    margin-left: 10%;
+    background-color: #fff;
     cursor: pointer;
-    color: #fff;
 }
 
-.botao_login:hover {
-    background-color: #dfad1a
-}
+/* Fim cabeçalho */
 
-/* Banner */
 
-.banner {
-    height: 70vh;
+/* banner */
+.banner img {
+  object-fit: cover;
     width: 100%;
-    background-image: url("../assets/img/banner.png");
-    background-size: cover;
-
+    height: 100vh;
+    filter: brightness(50%);
+    
 }
 
-.logocentro{
+.banner .texto {
+    display: flex;
+    z-index: 2;
+    position: absolute;
+    top: 35%;
+    left: 10%;
+    width: 350px;
+    flex-direction: column;
+}
+
+.banner .texto h2 {
+    color: #eee;
+    font-size: 26px;
+}
+
+.banner .texto span {
+    color: #eee;
+    font-weight: lighter;
+    margin-top: 10px;
+}
+
+/* Fim banner */
+
+/* Estilo de todos os titulos da página */
+
+.titulo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
-    align-items: center;
-    margin-left: 210px;
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
 }
 
-.banner .container {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content:left;
-    align-items:center;
-}
+/* Introdução */
 
-.banner .container p{
-    width: 300px;
-    margin: 0;
-    color: white;
-    font-size: 24px;    
-    padding: 0 100px;
-    flex-direction: column;
-}
-
-.banner .container .t1 {
-    font-size: 45px;
-}
-
-.banner .container .t2 {
-    font-weight: bolder;
-    font-size: 35px;
-}
-
-.banner .container .t3 {
-    font-size: 20px;
-}
-
-
-
-.linha-preta2 {
-    border: none;
-    height: 2px;
-    background-color: black;
-    width: 100%;
-    margin: 0px auto;
-}
-
-/* Parceiros */
-
-
-
-.linha-preta {
-    border: none;
-    height: 2px;
-    background-color: black;
-    width: 100%;
-    margin: 0px auto;
-}
-
-.texto_parceiros1 {
-    font-weight: bold;
-    font-size: 25px;
-}
-
-.texto_parceiros2 {
-    font-weight: bold;
-    font-size: 41px;
-}
-
-.imagens_parceiros {
-    flex-direction: column;
-    display: flex;
-    align-items: center;
-    display: flex;
-    gap: 5px;
-}
-
-#empresa1 {
-    width: 250px;
-    margin-top: -50px;
-}
-
-#empresa2 {
-    width: 100px;
-}
-
-/* Beneficios */
-
-.beneficios .container {
-    display: flex;
-    flex-direction: column;
-    margin: 0 80px 0px;
-    margin-top: 50px; 
-}
-
-.texto_beneficios1 {
-    font-size: 12px;
-}
-
-.texto_beneficios2 {
-    font-size: 40px;
-    font-weight: bold;
-}
-
-/* Card Beneficios */
-
-.card_beneficios .container {
+.introducao .container {
     display: flex;
     flex-direction: row;
-    padding: 12px;
-    padding: 0 100px;
+    margin: auto;
+    justify-content: space-between;
+    width: 85%;
+    margin-bottom: 80px;
+}
+
+.introducao .texto {
+    display: flex;
+    flex-direction: column;
     gap: 30px;
 }
 
-.card_beneficios .card {
-    display: flex;
-    flex-direction: column;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
-    cursor: pointer;
-    padding: 10px;
-    width: 50%;
-    height: 305px;
+.introducao .texto h2 {
+    font-size: 30px;
 }
 
-#img_beneficios {
-    display: flex;
-    width: 600px;
-    height: 330px;
-    border: 1px solid ;
+.introducao .texto span {
+    font-size: 18px;
 }
+
+.introducao .container .texto {
+    margin-left: 40px;
+}
+
+.introducao .imagens img {
+    height: 300px;
+    width: 500px;
+    border-radius: 10px;
+}
+
+/* Fim introdução */
+
+/* Perigo */
+
+.perigo .container {
+    display: flex;
+    width: 85%;
+    margin: auto;
+    margin-bottom: 80px;
+}
+
+.perigo .card {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 450px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    padding: 20px;
+}
+
+.perigo .card .texto-perigo {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 600px;
+}
+
+.perigo .card ul {
+    list-style: none;
+}
+
+.perigo .card li strong {
+    color: var(--amerela);
+}
+
+.perigo .card img {
+    width: 400px;
+    height: 400px;
+    border-radius: 10px;
+}
+
+/* Fim perigo */
+
 
 /* Como funciona */
 
-.como_funciona .container{
+.como-funciona {
+    width: 85%;
+    margin: auto;
     display: flex;
-    flex-direction: column;
-    margin-top: 50px;
-    background-color: var(--cinza);
-    color: #fff;
-}
-
-.texto_como_funciona1 {
-    flex-direction: column;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    font-size: 35px;
-    font-weight: bold;
-    padding: 0 80px;
-}
-
-.texto_como_funciona2 {
-    flex-direction: column;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    font-size: 15px;
-    padding: 0 80px;
-}
-
-/* Card como funciona */
-
-.cards_como_funciona .container{
-    display: flex;
+    justify-content: space-between;
     flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-    background-color: var(--cinza);
-    width: 100%;
-    height: 400px;
+    margin-bottom: 80px;
 }
 
-.cards_como_funciona .card {
+.como-funciona .card-container {
+   display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 250px;
+}
+
+.como-funciona .card {
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 400px;
+    height: 350px;
+    border-radius: 10px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
-    width: 250px;
-    height: 330px;
-    border-radius: 20px;
-    background-color: #fff;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     cursor: pointer;
 }
 
-.cards_como_funciona .card:hover {
+.como-funciona .card:hover {
     transform: scale(1.05);
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
     z-index: 2;
 }
 
-.cards_como_funciona .numero {
-    font-size: 20px;
+.card img {
+    width: 150px;
 }
 
-.cards_como_funciona .titulo {
+.card .numero {
+    font-size: 20px;
+    font-weight: bold;
+} 
+
+.card .titulo {
     font-size: 20px;
     color: var(--amerela);
-    font-weight: bold;
 }
 
-.cards_como_funciona .img {
-    width: 150px;
-    height: 150px;
-}
-
-.cards_como_funciona .texto {
-    font-size: 15px;
-    display: flex;
+.card .texto {
+    width: 200px;
+    margin-top: 10px;
+    font-size: 14px;
     text-align: center;
 }
 
-/* Sobre nós */
+/* Fim como funciona */
 
-.sobre .container {
+/* Beneficios */
+
+.beneficios {
+    width: 85%;
+    margin: auto;
     display: flex;
     flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    margin: 50px;
-    text-align: center;
-}
-
-.sobre .texto p{
-    display: flex;
-    text-align: left;
-    flex-direction: column;
-    width: 600px;
-    text-align: center;
-    padding: 0;
-    margin-left: -550px;
-    margin-bottom: -80px;
-}
-
-.sobre_titulo {
-    font-size: 30px;
-    font-weight: bold;
-}
-
-.sobre_texto {
-    font-size: 16px;
-}
-
-.sobre .img{
-    display: flex;
-    justify-content: right;
-    margin-right: -550px;
-    margin-top: 50px;
-
-}
-
-
-/* Valores */
-.valores .container {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    padding: 0 40px ;
     justify-content: space-between;
+    margin-bottom: 80px;
 }
 
-.card_valores {
+.beneficios .card {
     display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    width: 240px;
-    height: 240px;
-}
-
-.valores_titulo {
-    font-size: 25px;
-    color: var(--amerela);
-}
-
-.valores_texto {
-    font-size: 16px;
-}
-
-.valores .card_valores p {
-    display: flex;
-    text-align: center;
-    flex-direction: column;
-}
-
-#img_valores {
-    width: 150px;
-}
-
-/* Contato */
-
-.contato .container {
-    display: flex;
-    flex-direction: column;
-    margin-top: 70px;
-    padding: 0 80px;
-    background-color: var(--cinza);
-    color: #fff;
-}
-
-.contato_titulo {
-    flex-direction: column;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    font-weight: bold;
-    font-size: 35px;
-}
-
-.contato_texto {
-    flex-direction: column;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    font-weight: bold;
-    font-size: 15px;
-}
-
-.card_contato .container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: var(--cinza);
-    width: 100%;
-    height: 500px;
-}
-
-.card_contato .card {
-    display: flex;
-    align-items: center;
     flex-direction: column;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
-    width: 400px;
-    height: 450px;
-    border-radius: 20px;
-    background-color: #fff;
-    gap: 30px;
-}
-
-.card_contato .card p {
-    color: var(--amerela);
-    font-size: 30px;
-    margin-bottom: 0;
-}
-
-.card_contato .card label {
-    display: flex;
-    flex-direction: column;
     cursor: pointer;
-}
-
-.card_contato .card input {
-    width: 250px;
-    height: 25px;
-    border-radius: 8px;
-    border: 1px solid #000;
-    cursor: pointer;
-}
-
-.card_contato .card textarea {
-    width: 250px;
-    height: 100px;
-    border-radius: 8px;
-    border: 1px solid #000;
-    cursor: pointer;
-}
-
-.card_contato .card button {
-    width: 100px;
-    height: 35px;
-    border-radius: 8px;
-    border: none;
-    cursor: pointer;
-    color: #fff;
-    font-weight: bold;
-    background-color: var(--amerela);
-}
-
-.card_contato .card button:hover {
-    background-color: #dfad1a
-}
-
-/* Footer */
-.footer .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 100px;
-    margin-bottom: 50px;
-    margin-right: 50px;
-}
-
-.footer .elementos {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
+    padding: 10px;
+    width: 550px ;
+    height: 320px;
+    gap: 20px;
+    border-radius: 5px;
     
 }
 
-.parceiros .container {
+.beneficios .card h1 {
     display: flex;
     justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    font-size: 15px;
 }
 
-.footer .elementos #img {
+.beneficios .imagem img{
+    width: 550px;
+    height: 320px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    border-radius: 5px;
+}
+
+/* Fim beneficios */
+
+
+/* Footer */
+
+.footer .container {
+    display: flex;
     width: 100%;
-    max-width: 300px; /* Mantém o tamanho proporcional */
+    height: 150px;
+    background-color: #222;
+    margin-top: 80px;
 }
 
-.footer .ancoras {
+.footer .logo {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    margin-left: 50px;
+}
+
+
+.footer .redes {
     display: flex;
     flex-direction: row;
-    gap: 120px;
+    margin-left: 20%;
+    gap: 35px;
 }
 
-.links_rapidos {
-    font-size: 20px;
+.footer .conteudo {
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+    margin-top: 35px;
+    color: #fff;
+    text-align: center;
 }
 
-#links_rapidos {
+
+.footer .conteudo a {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 10px;
+    text-decoration: none;
+    color: #fff;
+    margin-bottom: 15px;
+    width: 250px;
+} 
+
+.feito_por .container {
+    width: 100%;
 }
 
-.contato_footer {
-    font-size: 20px;
-
-}
-
-#contato_footer {
+.feito_por .conteudo {
     display: flex;
-    flex-direction: column;
     align-items: center;
-    gap: 8px;
+    justify-content: center;
+    height: 40px;
+    background-color: #000;
+    color: #fff;
 }
+
+/* Fim footer  */
+
