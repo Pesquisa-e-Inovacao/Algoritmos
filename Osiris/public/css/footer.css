@@ -1,0 +1,120 @@
+
+/* Footer */
+.footer {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    height: 430px;
+    background-color: #222;
+    margin-top: 80px;
+    border-radius: 15px 15px 0 0;
+}
+
+.footer .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Alinha verticalmente os itens */
+    width: 80%;
+    margin: auto;
+    height: 100%; /* Ocupa toda a altura do footer */
+}
+
+.footer .logo img {
+    width: 250px;
+}
+
+.footer .links {
+    font-size: 20px;
+}
+
+.footer .redes {
+    display: flex;
+    flex-direction: row;
+    margin-top: 0; /* Removido para alinhar corretamente */
+}
+
+.footer .contato {
+    display: flex;
+    flex-direction: column;
+    color: #fff;
+    gap: 10px;
+    margin-bottom: 30px;
+    width: 300px;
+}
+
+.footer .contato h3 {
+    color: #000;
+    font-weight: 400;
+    background-color: var(--amerela);
+    padding: 5px;
+    width: 75px;
+    border-radius: 5px;
+}
+
+.footer .contato a {
+    text-decoration: none;
+    margin-top: 10px;
+}
+
+.footer .contato span {
+    color: #fff;
+    text-align: center;
+}
+
+.footer .formulario-contato {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background-color: #f2f2f2 ;
+    padding: 10px;
+    width: 400px;
+    height: 270px;
+    border-radius: 10px;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.footer .formulario-contato input {
+    width: 340px;
+    height: 35px;
+    border-radius: 5px;
+    border: none;
+    background-color: #1C1F20;
+    border: 0.5px solid #f9f9f9;
+}
+
+.footer .formulario-contato textarea {
+    width: 340px;
+    height: 100px;
+    border-radius: 5px;
+    border: none;
+    background-color: #1C1F20;
+    border: 0.5px solid #f9f9f9;
+}
+
+.footer .formulario-contato button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 25px;
+    background-color: var(--amerela);
+    border-radius: 10px;
+    border: none;
+}
+
+.feito_por .container {
+    width: 100%;
+}
+
+.feito_por .conteudo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    background-color: #000;
+    color: #fff;
+}
+
+/* Fim footer  */
+

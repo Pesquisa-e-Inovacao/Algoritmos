@@ -61,6 +61,7 @@
 
 main {
     width: 85%;
+    height: 80vh;
     display: flex;
     flex-direction: row;
     margin: auto;
@@ -206,65 +207,3 @@ main {
 .fechar:hover {
     color: #000;
 }
-
-
-/* Footer */
-
-.footer .container {
-    display: flex;
-    width: 100%;
-    height: 150px;
-    background-color: #222;
-    margin-top: 80px;
-}
-
-.footer .logo {
-    display: flex;
-    justify-content: space-around;
-    flex-direction: column;
-    margin-left: 50px;
-}
-
-
-.footer .redes {
-    display: flex;
-    flex-direction: row;
-    margin-left: 20%;
-    gap: 35px;
-}
-
-.footer .conteudo {
-    display: flex;
-    flex-direction: row;
-    gap: 50px;
-    margin-top: 35px;
-    color: #fff;
-    text-align: center;
-}
-
-
-.footer .conteudo a {
-    display: flex;
-    flex-direction: column;
-    text-decoration: none;
-    color: #fff;
-    margin-bottom: 15px;
-    width: 250px;
-} 
-
-.feito_por .container {
-    width: 100%;
-}
-
-.feito_por .conteudo {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 40px;
-    background-color: #000;
-    color: #fff;
-}
-
-/* Fim footer  */
-
-
