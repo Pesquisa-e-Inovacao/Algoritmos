@@ -4,7 +4,11 @@ var router = express.Router();
 var dashController = require("../controllers/dashController");
 
 router.get("/silos", function (req, res) {
-    dashController.dadosClasse(req, res);
+    dashController.dadosSilos(req, res);
+});
+
+router.get("/silosMedios", function (req, res) {
+    dashController.dadosSilosMedios(req, res);
 });
 
 module.exports = router;
