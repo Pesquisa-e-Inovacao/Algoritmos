@@ -1,5 +1,5 @@
 {
-  "name": "web-data-viz",
+  "name": "web-data-viz-com-bobia",
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
@@ -7,9 +7,18 @@
     "start": "node app.js",
     "dev": "nodemon --exec node app.js"
   },
-  "author": "Feito pelos desenvolvedores @ São Paulo Tech School / Bandtec Digital School",
-  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/BandTec/BobIA.git"
+  },
+  "homepage": "https://github.com/BandTec/BobIA.git#readme",
+  "author": "Feito pelos desenvolvedores @ São Paulo Tech School / Bandtec Digital School + @MatheusFerreiraMatos @gfalexander @miranda500",
+  "license": [
+    "MIT",
+    "ISC"
+  ],
   "dependencies": {
+    "@google/genai": "^0.14.1",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "express": "^4.17.1",

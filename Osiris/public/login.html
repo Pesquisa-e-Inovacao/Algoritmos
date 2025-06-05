@@ -65,12 +65,15 @@
                     console.log(json);
                     console.log(JSON.stringify(json));
                     sessionStorage.EMAIL_USUARIO = json.email;
-                    sessionStorage.NOME_USUARIO = json.nome;
-                    sessionStorage.ID_USUARIO = json.id;
-                    sessionStorage.AQUARIOS = JSON.stringify(json.aquarios)
+                    sessionStorage.NOME_USUARIO = json.nomeEmpresa;
+                    sessionStorage.ID_USUARIO = json.idEmpresa;
 
                     setTimeout(function () {
-                        window.location = "dashboard.html";
+                        if(sessionStorage.EMAIL_USUARIO == "admin@admin"){
+                            window.location = "bobia.html";
+                        } else{
+                            window.location = "dashboard.html";
+                        }
                     }, 1000); // apenas para exibir o loading
 
                 });
