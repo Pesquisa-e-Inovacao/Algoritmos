@@ -162,5 +162,29 @@ body {
     height: 100%;
 }
 
+.line-container {
+  display: flex;
+  width: 80%;
+  height: 40px;
+  margin-left: 16%;
+  margin-top: 10px;
+  border: 2px solid #333;
+  border-radius: 6px;
+  overflow: hidden;
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+  color: white;
+  text-align: center;
+}
 
+.range {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
+.blue { background-color: #007BFF; }     /* Azul */
+.green { background-color: #28A745; }    /* Verde */
+.yellow { background-color: #FFC107; color: #000; }  /* Amarelo */
+.red { background-color: #DC3545; }      /* Vermelho */
