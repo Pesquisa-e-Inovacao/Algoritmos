@@ -19,7 +19,7 @@
             <div class="perfil">
                 <img src="./assets/img/perfil.png" id="logo_slogan_branco">
 
-                <span>Nome do Usuário</span>
+                <span id="nome">Nome do Usuário</span>
             </div>
 
             <ul class="links">
@@ -57,28 +57,28 @@
                 <div class="card">
                     <div class="info">
                         <span class="titulo">Percentual máximo de gás metano captado</span>
-                        <span class="dado">4.90% | Silo D</span>
+                        <span class="dado" id="dadoMaximo">4.90% | Silo D</span>
                     </div>
                 </div>
 
                 <div class="card">
                     <div class="info">
                         <span class="titulo">Percentual mínimo de gás metano captado</span>
-                        <span class="dado">0.20% | Silo A</span>
+                        <span class="dado" id="dadoMinimo">0.20% | Silo A</span>
                     </div>
                 </div>
 
                 <div class="card">
                     <div class="info">
                         <span class="titulo">Quantidades de silos monitorados</span>
-                        <span class="dado">2</span>
+                        <span class="dado" id="silosMonitorados">2</span>
                     </div>
                 </div>
 
                 <div class="card">
                     <div class="info">
                         <span class="titulo">Quantidades de silos no local</span>
-                        <span class="dado">10</span>
+                        <span class="dado" id="silosTotais">10</span>
                     </div>
                 </div>
 
@@ -213,6 +213,7 @@
 </script>
 
 <script>
+    nome.innerHTML = sessionStorage.NOME_USUARIO;
     function obterDadosGrafico() {
         verifyFetchSilos = false;
         verifyFetchSilosMedios = false;
@@ -239,6 +240,23 @@
                     console.log("deu true no gráfico 2");
                     resposta.reverse();
                     plotarGraficoSiloMedio(resposta);
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+
+
+        fetch(`/grafico/silosMonitorados`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                    console.log("deu true na kpi 3 e 4");
+                    resposta.reverse();
+                    kpiSilosMonitorados(resposta);
                 });
             } else {
                 console.error('Nenhum dado encontrado ou erro na API');
@@ -277,7 +295,7 @@
         // Inserindo valores recebidos em estrutura para plotar o gráfico
         for (var i = 0; i < resposta.length; i++) {
             dados.datasets[0].data.push(resposta[i].valor);
-            labels.push(resposta[i].dtRegistro);
+            labels.push(resposta[i].data_format);
         }
 
 
@@ -305,7 +323,7 @@
         let dados1 = {
             labels: labels1,
             datasets: [{
-                label: 'Silo Teste',
+                label: 'Silo A',
                 data: [],
                 fill: false,
                 borderColor: 'rgb(0, 0, 0)',
@@ -313,6 +331,15 @@
                 tension: 0.1,
 
             },
+            {
+                label: 'Silo B',
+                data: [],
+                fill: false,
+                borderColor: 'rgb(0, 0, 0)',
+                backgroundColor: 'rgb(255, 165, 0)',
+                tension: 0.1,
+
+            }
             ]
         };
 
@@ -321,11 +348,38 @@
         console.log("gráfico 2");
         console.log(resposta);
         // Inserindo valores recebidos em estrutura para plotar o gráfico
-
         // Inserindo valores recebidos em estrutura para plotar o gráfico
-        for (var i = 0; i < resposta.length; i++) {
-            dados1.datasets[0].data.push(resposta[i].valor);
-            labels1.push(resposta[i].dtRegistro);
+        var teste = resposta.length / 2;
+        var contadorTeste = 0;
+
+            for (var i = 0; i < resposta.length; i++) {
+                if(contadorTeste < teste){
+                    labels1.push(resposta[i].data_hora);
+                    contadorTeste += 1;
+                }
+            if(resposta[i].fk1 == 1){
+                dados1.datasets[0].data.push(resposta[i].valor);
+            } else{
+                dados1.datasets[1].data.push(resposta[i].valor);
+            }
+        }
+
+        var min0 = Math.min(...dados1.datasets[0].data);
+        var min1 = Math.min(...dados1.datasets[1].data);
+
+        var max0 = Math.max(...dados1.datasets[0].data);
+        var max1 = Math.max(...dados1.datasets[1].data);
+
+        if (min0 < min1) {
+            dadoMinimo.innerHTML = `${min0}% | Silo A`
+        } else {
+            dadoMinimo.innerHTML = `${min1}% | Silo B`
+        }
+
+        if (max0 > max1) {
+            dadoMaximo.innerHTML = `${max0}% | Silo A`
+        } else {
+            dadoMaximo.innerHTML = `${max1}% | Silo B`
         }
 
         // Criando estrutura para plotar gráfico - config
@@ -344,4 +398,18 @@
         )
 
     };
+
+    function kpiSilosMonitorados(resposta){
+        console.log(resposta);
+        var contMonitorado = 0;
+        for(var i = 0; i < resposta.length; i++){
+            if(resposta[i].fkSilo != "0"){
+                contMonitorado += 1;
+            }
+        }
+        console.log(contMonitorado);
+
+        silosMonitorados.innerHTML = contMonitorado;
+        silosTotais.innerHTML = resposta.length;
+    }
 </script>

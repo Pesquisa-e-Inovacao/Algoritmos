@@ -10,7 +10,7 @@
 
 </head>
 
-<body>
+<body onload="obterDadosGrafico()">
 
     <!-- Menu Lateral -->
 
@@ -19,7 +19,7 @@
             <div class="perfil">
                 <img src="../assets/img/perfil.png" id="logo_slogan_branco">
 
-                <span>Nome do Usuário</span>
+                <span id="nome">Nome do Usuário</span>
             </div>
 
             <ul class="links">
@@ -38,7 +38,7 @@
         </div>
     </div>
 
-     <div class="titulo">
+    <div class="titulo">
         <div class="container">
             <div style="text-align: center; margin: 20px 0;">
                 <h2 style="font-weight: bold; color: #333;">Olá usuário, você está vendo as métricas gerais dos silos
@@ -55,21 +55,21 @@
             <div class="card">
                 <div class="info">
                     <span class="titulo">Nível de gás metano atual</span>
-                    <span class="dado">0.80</span>
+                    <span class="dado" id="percentualAtual">0.80</span>
                 </div>
             </div>
 
             <div class="card">
                 <div class="info">
                     <span class="titulo">Percentual máximo de gás captado</span>
-                    <span class="dado">1.20 | 01:00</span>
+                    <span class="dado" id="percentualMax">1.20 | 01:00</span>
                 </div>
             </div>
 
             <div class="card">
                 <div class="info">
                     <span class="titulo">Percentual mínimo de gás captado</span>
-                    <span class="dado">0.20 | 12:00</span>
+                    <span class="dado" id="percentualMinimo">0.20 | 12:00</span>
                 </div>
             </div>
         </div>
@@ -77,7 +77,7 @@
 
     <!-- Gráficos -->
 
-      <div class="graficos">
+    <div class="graficos">
         <div class="container">
             <div class="card">
                 <canvas id="grafico_barra"></canvas>
@@ -93,22 +93,22 @@
 </html>
 
 <script>
-     const grafico1 = document.getElementById('grafico_barra');
-
-   new Chart(grafico1, {
+    const grafico1 = document.getElementById('grafico_barra');
+    nome.innerHTML = sessionStorage.NOME_USUARIO;
+    new Chart(grafico1, {
         type: 'line',
         data: {
             labels: [
                 '29/04', '30/04', '31/04', '01/05', '02/05', '03/05', '04/05', '05/05',
                 '06/05', '07/05', '08/05', '09/05', '10/05', '11/05', '12/05', '13/05',
-                '14/05', '15/05', '16/05', '17/05', '18/05', '19/05', '20/05', '21/05', 
+                '14/05', '15/05', '16/05', '17/05', '18/05', '19/05', '20/05', '21/05',
                 '22/05', '23/05', '24/05', '25/05', '26/05', '27/05', '28/05', '29/05'
             ], datasets: [{
                 label: 'Silo B',
                 data: [
-                1.10, 1.20, 0.80, 0.50, 1.0, 1.10, 0.90, 0.30, 0.40, 0.80, 0.40, 0.30, 0.20, 0.60, 
-                0.60, 1.00, 0.90, 0.70, 0.80, 1.10, 0.50, 0.60, 0.90, 0.40,  
-                1.00, 0.80, 0.70, 0.60, 0.90, 0.50, 0.80, 1.10, 0.60, 0.40
+                    1.10, 1.20, 0.80, 0.50, 1.0, 1.10, 0.90, 0.30, 0.40, 0.80, 0.40, 0.30, 0.20, 0.60,
+                    0.60, 1.00, 0.90, 0.70, 0.80, 1.10, 0.50, 0.60, 0.90, 0.40,
+                    1.00, 0.80, 0.70, 0.60, 0.90, 0.50, 0.80, 1.10, 0.60, 0.40
 
                 ], borderWidth: 1,
                 backgroundColor: '#d00000',
@@ -144,49 +144,130 @@
     });
 
 
-    const grafico2 = document.getElementById('grafico_linha');
+    // const grafico2 = document.getElementById('grafico_linha');
 
-    new Chart(grafico2, {
-        type: 'line',
-        data: {
-            labels: [
-                '00:00', '01:00', '02:00', '03:00', '04:00', '05:00', '06:00', '07:00',
-                '08:00', '09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00',
-                '16:00', '17:00', '18:00', '19:00', '20:00', '21:00', '22:00', '23:00'
-            ], datasets: [{
+    // new Chart(grafico2, {
+    //     type: 'line',
+    //     data: {
+    //         labels: [
+    //             '00:00', '01:00', '02:00', '03:00', '04:00', '05:00', '06:00', '07:00',
+    //             '08:00', '09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00',
+    //             '16:00', '17:00', '18:00', '19:00', '20:00', '21:00', '22:00', '23:00'
+    //         ], datasets: [{
+    //             label: 'Silo B',
+    //             data: [
+    //                 1.10, 1.20, 0.80, 0.50, 1.0, 1.10, 0.90, 0.30, 0.40, 0.80, 0.40, 0.30, 0.20, 0.60, 
+    //             ], borderWidth: 1,
+    //             backgroundColor: '#d00000',
+    //             borderColor: '#d00000'
+    //         },
+    //         ]
+    //     },
+    //     options: {
+    //         responsive: true,
+    //         plugins: {
+    //             legend: {
+    //                 labels: {
+    //                     font: {
+    //                         size: 12
+    //                     }
+    //                 }
+    //             },
+    //             title: {
+    //                 display: true,
+    //                 text: 'Média diária dos gases no silo B (por Hora)',
+    //                 color: '#222222',
+    //                 font: {
+    //                     size: 20,
+    //                 }
+    //             },
+    //             tooltip: {
+    //                 backgroundColor: '#333333',
+    //                 titleColor: '#ffffff',
+    //                 bodyColor: '#ffffff'
+    //             }
+    //         }
+    //     }
+    // });
+
+
+    function obterDadosGrafico() {
+        fetch(`/grafico/silosMedios`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                    console.log("deu true no gráfico 1")
+                    // resposta.reverse();
+                    plotarGraficoSilo(resposta);
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+    }
+    function plotarGraficoSilo(resposta) {
+
+        let labels = [];
+        console.log('iniciando plotagem do gráfico...');
+        // Criando estrutura para plotar gráfico - dados
+        let dados = {
+            labels: labels,
+            datasets: [{
                 label: 'Silo B',
-                data: [
-                    1.10, 1.20, 0.80, 0.50, 1.0, 1.10, 0.90, 0.30, 0.40, 0.80, 0.40, 0.30, 0.20, 0.60, 
-                ], borderWidth: 1,
-                backgroundColor: '#d00000',
-                borderColor: '#d00000'
+                data: [],
+                fill: false,
+                borderColor: 'rgb(0, 0, 0)',
+                backgroundColor: 'rgb(255, 165, 0)',
+                tension: 0.1,
+
             },
             ]
-        },
-        options: {
-            responsive: true,
-            plugins: {
-                legend: {
-                    labels: {
-                        font: {
-                            size: 12
-                        }
-                    }
-                },
-                title: {
-                    display: true,
-                    text: 'Média diária dos gases no silo B (por Hora)',
-                    color: '#222222',
-                    font: {
-                        size: 20,
-                    }
-                },
-                tooltip: {
-                    backgroundColor: '#333333',
-                    titleColor: '#ffffff',
-                    bodyColor: '#ffffff'
-                }
+        };
+
+        console.log('----------------------------------------------')
+        console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
+        console.log("gráfico 1");
+        console.log(resposta);
+        // Inserindo valores recebidos em estrutura para plotar o gráfico
+        var a = [];
+        var b = []
+        for (var i = 0; i < resposta.length; i++) {
+            if (resposta[i].fk1 == 2) {
+                dados.datasets[0].data.push(resposta[i].valor);
+                labels.push(resposta[i].data_hora);
+                a.push(resposta[i].valor);
+                b.push(resposta[i].data_hora);
             }
         }
-    });
+        percentualAtual.innerHTML = `${a[a.length - 1]} | ${b[b.length - 1]}`
+        percentualMax.innerHTML = `${Math.max(...a)} | `;
+        for (var i = 0; i < a.length; i++) {
+            if (a[i] == Math.max(...a)) {
+                break;
+            }
+        }
+        percentualMax.innerHTML += `${b[i]}`;
+        percentualMinimo.innerHTML = `${Math.min(...a)} | `
+        for (var i = 0; i < a.length; i++) {
+            if (a[i] == Math.max(...a)) {
+                break;
+            }
+        }
+        percentualMinimo.innerHTML += `${b[i]}`;
+
+        const config = {
+            type: 'line',
+            data: dados,
+        };
+
+        // Adicionando gráfico criado em div na tela
+
+        let chartClass = new Chart(
+            document.getElementById(`grafico_linha`),
+            config,
+        )
+    }
 </script>

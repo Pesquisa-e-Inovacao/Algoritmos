@@ -2,11 +2,7 @@ var dashModel = require("../models/dashModel");
 
 function dadosSilos(req, res) {
 
-    const limite_linhas = 10;
-
-    console.log(`Recuperando as ultimas ${limite_linhas} medidas`);
-
-    dashModel.dadosSilos(limite_linhas).then(function (resultado) {
+    dashModel.dadosSilos().then(function (resultado) {
         if (resultado.length > 0) {
             res.status(200).json(resultado);
         } else {
@@ -38,7 +34,27 @@ function dadosSilosMedios(req, res) {
     });
 }
 
+
+function dadosSilosMonitorados(req, res) {
+
+    dashModel.dadosSilosMonitorados().then(function (resultado1) {
+        if (resultado1.length > 0) {
+            res.status(200).json(resultado1);
+        } else {
+            res.status(204).send("Nenhum resultado encontrado!")
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+        console.log("Houve um erro ao buscar as ultimas medidas.", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+    });
+}
+
+
+
+
 module.exports = {
     dadosSilos,
-    dadosSilosMedios
+    dadosSilosMedios,
+    dadosSilosMonitorados
 }

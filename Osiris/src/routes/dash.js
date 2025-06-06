@@ -11,4 +11,8 @@ router.get("/silosMedios", function (req, res) {
     dashController.dadosSilosMedios(req, res);
 });
 
+router.get("/silosMonitorados", function (req, res) {
+    dashController.dadosSilosMonitorados(req, res);
+});
+
 module.exports = router;
