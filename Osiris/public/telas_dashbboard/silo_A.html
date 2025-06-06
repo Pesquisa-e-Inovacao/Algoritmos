@@ -41,7 +41,8 @@
     <div class="titulo">
         <div class="container">
             <div style="text-align: center; margin: 20px 0;">
-                <h2 style="font-weight: bold; color: #333;">Olá usuário, você está vendo as métricas gerais do silo A
+                <h2 style="font-weight: bold; color: #333;" id="h2Usuario">Olá usuário, você está vendo as métricas
+                    gerais do silo A
                 </h2>
             </div>
         </div>
@@ -99,14 +100,15 @@
 <script>
     const grafico1 = document.getElementById('grafico_barra');
     nome.innerHTML = sessionStorage.NOME_USUARIO;
+    h2Usuario.innerHTML = `Olá ${sessionStorage.NOME_USUARIO}, você está vendo as métricas gerais dos silos`
     new Chart(grafico1, {
         type: 'line',
         data: {
             labels: [
-                '29/04', '30/04', '31/04', '01/05', '02/05', '03/05', '04/05', '05/05',
-                '06/05', '07/05', '08/05', '09/05', '10/05', '11/05', '12/05', '13/05',
-                '14/05', '15/05', '16/05', '17/05', '18/05', '19/05', '20/05', '21/05',
-                '22/05', '23/05', '24/05', '25/05', '26/05', '27/05', '28/05', '29/05'
+                    '05/05', '06/05', '07/05', '08/05', '09/05', '10/05', '11/05', '12/05',
+                    '13/05', '14/05', '15/05', '16/05', '17/05', '18/05', '19/05', '20/05',
+                    '21/05', '22/05', '23/05', '24/05', '25/05', '26/05', '27/05', '28/05', 
+                    '29/05', '30/05', '31/05', '01/06', '02/06', '03/06', '04/06', '05/06'
             ], datasets: [{
                 label: 'Silo A',
                 data: [
@@ -212,7 +214,7 @@
             });
     }
     function plotarGraficoSilo(resposta) {
-
+        resposta.reverse();
         let labels = [];
         console.log('iniciando plotagem do gráfico...');
         // Criando estrutura para plotar gráfico - dados
@@ -222,8 +224,8 @@
                 label: 'Silo A',
                 data: [],
                 fill: false,
-                borderColor: 'rgb(0, 0, 0)',
-                backgroundColor: 'rgb(255, 165, 0)',
+                borderColor: '#3f88c5',
+                backgroundColor: '#3f88c5',
                 tension: 0.1,
 
             },
@@ -234,32 +236,28 @@
         console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
         console.log("gráfico 1");
         console.log(resposta);
-
-        for(var i = 0; i < resposta.length; i++){
-            resposta[i] = resposta[i].split("T")[0];
-        }
         // Inserindo valores recebidos em estrutura para plotar o gráfico
         var a = [];
         var b = []
         for (var i = 0; i < resposta.length; i++) {
-            if(resposta[i].fk1 == 1){
+            if (resposta[i].fk1 == 1) {
                 dados.datasets[0].data.push(resposta[i].valor);
-                labels.push(resposta[i].data_hora);
+                labels.push(resposta[i].data_hora.substring(11, 19));
                 a.push(resposta[i].valor);
-                b.push(resposta[i].data_hora);                
+                b.push(resposta[i].data_hora.substring(11, 19));
             }
         }
         percentualAtual.innerHTML = `${a[a.length - 1]} | ${b[b.length - 1]}`
         percentualMax.innerHTML = `${Math.max(...a)} | `;
-        for(var i = 0; i < a.length; i++){
-            if(a[i] == Math.max(...a)){
+        for (var i = 0; i < a.length; i++) {
+            if (a[i] == Math.max(...a)) {
                 break;
             }
         }
         percentualMax.innerHTML += `${b[i]}`;
         percentualMinimo.innerHTML = `${Math.min(...a)} | `
-        for(var i = 0; i < a.length; i++){
-            if(a[i] == Math.max(...a)){
+        for (var i = 0; i < a.length; i++) {
+            if (a[i] == Math.max(...a)) {
                 break;
             }
         }
@@ -277,6 +275,56 @@
             document.getElementById(`grafico_linha`),
             config,
         )
+        setTimeout(() => atualizarGrafico(dados, chartClass), 6000);
     };
 
+
+    function atualizarGrafico(dados, chartClass) {
+        fetch(`/grafico/silosAtualizar/`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (novoRegistro) {
+
+                    // obterdados(idAquario);
+                    // alertar(novoRegistro, idAquario);
+                    console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
+                    console.log(`Dados atuais do gráfico:`);
+                    console.log(dados);
+
+                    // let avisoCaptura = document.getElementById(`avisoCaptura${idAquario}`)
+                    // avisoCaptura.innerHTML = ""
+
+
+                    if (novoRegistro[0].data_hora == dados.labels[dados.labels.length - 1]) {
+                        console.log("---------------------------------------------------------------")
+                        console.log("Como não há dados novos para captura, o gráfico não atualizará.")
+                        console.log("Horário do novo dado capturado:")
+                        console.log(novoRegistro[0].data_hora.substring(11, 19))
+                        console.log("Horário do último dado capturado:")
+                        console.log(dados.labels[dados.labels.length - 1])
+                        console.log("---------------------------------------------------------------")
+                    } else {
+                        // tirando e colocando valores no gráfico
+                        dados.labels.shift(); // apagar o primeiro
+                        dados.labels.push(novoRegistro[0].data_hora.substring(11, 19)); // incluir um novo momento
+
+                        dados.datasets[0].data.shift();  // apagar o primeiro de umidade
+                        dados.datasets[0].data.push(novoRegistro[0].valor); // incluir uma nova medida de umidade
+
+                        chartClass.update();
+                    }
+
+                    // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+                    proximaAtualizacao = setTimeout(() => atualizarGrafico(dados, chartClass), 6000);
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+                // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+                proximaAtualizacao = setTimeout(() => atualizarGrafico(dados, chartClass), 6000);
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+
+    }
 </script>

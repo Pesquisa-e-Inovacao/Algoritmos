@@ -17,6 +17,7 @@ function dadosSilosMedios(limite_linhas) {
     SELECT fk_sensor as fk1, valor, data_hora
     FROM leituraSensor
     where fk_sensor = 1
+    ORDER BY data_hora DESC
     LIMIT 10
 )
 UNION ALL
@@ -24,9 +25,35 @@ UNION ALL
     SELECT fk_sensor as fk2, valor, data_hora
     FROM leituraSensor
     where fk_sensor = 2
+    ORDER BY data_hora DESC
     LIMIT 10
 )
 LIMIT 20;
+    `
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
+function dadosSilosAtualizar(limite_linhas) {
+    var instrucaoSql =
+    `
+    (
+    SELECT fk_sensor as fk1, valor, data_hora
+    FROM leituraSensor
+    where fk_sensor = 1
+    ORDER BY data_hora DESC
+    LIMIT 1
+    
+)
+UNION ALL
+(
+    SELECT fk_sensor as fk2, valor, data_hora
+    FROM leituraSensor
+    where fk_sensor = 2
+    ORDER BY data_hora DESC
+    LIMIT 1
+)
+LIMIT 2;
     `
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
@@ -42,5 +69,6 @@ function dadosSilosMonitorados() {
 module.exports = {
     dadosSilos,
     dadosSilosMedios,
-    dadosSilosMonitorados
+    dadosSilosMonitorados,
+    dadosSilosAtualizar
 }

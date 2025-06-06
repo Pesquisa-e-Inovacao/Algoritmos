@@ -21,8 +21,8 @@
             <span>Endereço de email:</span>
             <input id="idEmail" type="email" onInput="verificarEmail()" placeholder="exemplo@exemplo.com">
             <br>
-            <span>CNPJ:</span>
-            <input id="idCNPJ" type="text" oninput="verificarCNPJ()" maxlength=18 placeholder="12.345.678/0001-00">
+            <span>Código da empresa:</span>
+            <input id="idCNPJ" type="text" maxlength=5 placeholder="A1B2C">
             <br>
             <span>Senha:</span>
             <input id="idSenha" type="password" oninput="verificarSenha()" placeholder="digite aqui...">
@@ -98,23 +98,6 @@
         }
     }
 
-    function verificarCNPJ() {
-        var cnpj = idCNPJ.value;
-        if (cnpj[2] != "." && (cnpj.length == 2)) {
-            idCNPJ.value += "."
-        } else if (cnpj[6] != "." && (cnpj.length == 6)) {
-            idCNPJ.value += "."
-        } else if (cnpj[10] != "/" && (cnpj.length == 10)) {
-            idCNPJ.value += "/"
-        } else if (cnpj[15] != "-" && (cnpj.length == 15)) {
-            idCNPJ.value += "-"
-        }
-        if (cnpj.length == 18) {
-            return true;
-        } else {
-            return false;
-        }
-    }
 
     function verificarEmail() {
         var nome = idEmpresa.value;
@@ -142,7 +125,7 @@
             }
         }
     function enviar() {
-        if (verificarCNPJ() && verificarEmail()&& verificarSenha()) {
+        if (verificarEmail()&& verificarSenha()) {
             var nomeVar = idEmpresa.value;
             var emailVar = idEmail.value;
             var senhaVar = idSenha.value;

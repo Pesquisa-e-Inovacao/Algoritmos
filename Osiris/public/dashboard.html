@@ -43,7 +43,8 @@
         <div class="titulo">
             <div class="container">
                 <div style="text-align: center; margin: 20px 0;">
-                    <h2 style="font-weight: bold; color: #333;">Olá usuário, você está vendo as métricas gerais dos
+                    <h2 style="font-weight: bold; color: #333;" id="h2Usuario">Olá usuário, você está vendo as métricas
+                        gerais dos
                         silos
                     </h2>
                 </div>
@@ -56,14 +57,14 @@
 
                 <div class="card">
                     <div class="info">
-                        <span class="titulo">Percentual máximo de gás metano captado</span>
+                        <span class="titulo">Percentual máximo de gás metano captado no dia de hoje</span>
                         <span class="dado" id="dadoMaximo">4.90% | Silo D</span>
                     </div>
                 </div>
 
                 <div class="card">
                     <div class="info">
-                        <span class="titulo">Percentual mínimo de gás metano captado</span>
+                        <span class="titulo">Percentual mínimo de gás metano captado no dia de hoje</span>
                         <span class="dado" id="dadoMinimo">0.20% | Silo A</span>
                     </div>
                 </div>
@@ -106,54 +107,65 @@
 
 <script>
     const grafico1 = document.getElementById('grafico_barra');
+    h2Usuario.innerHTML = `Olá ${sessionStorage.NOME_USUARIO}, você está vendo as métricas gerais dos silos`
+    new Chart(grafico1, {
+        type: 'line',
+        data: {
+            labels: [
+                '05/05', '06/05', '07/05', '08/05', '09/05', '10/05', '11/05', '12/05',
+                '13/05', '14/05', '15/05', '16/05', '17/05', '18/05', '19/05', '20/05',
+                '21/05', '22/05', '23/05', '24/05', '25/05', '26/05', '27/05', '28/05',
+                '29/05', '30/05', '31/05', '01/06', '02/06', '03/06', '04/06', '05/06'
+            ], datasets: [{
+                label: 'Silo A',
+                data: [
+                    1.10, 1.20, 0.80, 0.50, 1.0, 1.10, 0.90, 0.30, 0.40, 0.80, 0.40, 0.30, 0.20, 0.60,
+                    0.60, 1.00, 0.90, 0.70, 0.80, 1.10, 0.50, 0.60, 0.90, 0.40,
+                    1.00, 0.80, 0.70, 0.60, 0.90, 0.50, 0.80, 1.10, 0.60, 0.40
 
-    //    new Chart(grafico1, {
-    //         type: 'line',
-    //         data: {
-    //             labels: [
-    //                 '29/04', '30/04', '31/04', '01/05', '02/05', '03/05', '04/05', '05/05',
-    //                 '06/05', '07/05', '08/05', '09/05', '10/05', '11/05', '12/05', '13/05',
-    //                 '14/05', '15/05', '16/05', '17/05', '18/05', '19/05', '20/05', '21/05', 
-    //                 '22/05', '23/05', '24/05', '25/05', '26/05', '27/05', '28/05', '29/05'
-    //             ], datasets: [{
-    //                 label: 'Silo A',
-    //                 data: [
-    //                 1.10, 1.20, 0.80, 0.50, 1.0, 1.10, 0.90, 0.30, 0.40, 0.80, 0.40, 0.30, 0.20, 0.60, 
-    //                 0.60, 1.00, 0.90, 0.70, 0.80, 1.10, 0.50, 0.60, 0.90, 0.40,  
-    //                 1.00, 0.80, 0.70, 0.60, 0.90, 0.50, 0.80, 1.10, 0.60, 0.40
+                ], borderWidth: 1,
+                backgroundColor: '#3f88c5',
+                borderColor: '#3f88c5'
+            },
+            {
+                label: 'Silo B',
+                data: [
+                    1.10, 1.20, 1.80, 2.50, 2.0, 2.10, 2.90, 2.30, 2.40, 2.80, 2.40, 2.30, 2.20, 2.60,
+                    2.60, 3.00, 2.90, 2.70, 2.80, 3.10, 2.50, 2.60, 2.90, 2.40,
+                    3.00, 3.80, 3.70, 3.60, 3.90, 3.50, 3.80, 4.10, 3.60, 3.40
 
-    //                 ], borderWidth: 1,
-    //                 backgroundColor: '#3f88c5',
-    //                 borderColor: '#3f88c5'
-    //             },
-    //             ]
-    //         },
-    //         options: {
-    //             responsive: true,
-    //             plugins: {
-    //                 legend: {
-    //                     labels: {
-    //                         font: {
-    //                             size: 12
-    //                         }
-    //                     }
-    //                 },
-    //                 title: {
-    //                     display: true,
-    //                     text: 'Percentual máximo captado por dia (nos ultimos 30 dias)',
-    //                     color: '#222222',
-    //                     font: {
-    //                         size: 20,
-    //                     }
-    //                 },
-    //                 tooltip: {
-    //                     backgroundColor: '#333333',
-    //                     titleColor: '#ffffff',
-    //                     bodyColor: '#ffffff'
-    //                 }
-    //             }
-    //         }
-    //     });
+                ], borderWidth: 1,
+                backgroundColor: '#d00000',
+                borderColor: '#d00000'
+            }
+            ]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    labels: {
+                        font: {
+                            size: 12
+                        }
+                    }
+                },
+                title: {
+                    display: true,
+                    text: 'Percentual máximo captado por dia (nos ultimos 30 dias)',
+                    color: '#222222',
+                    font: {
+                        size: 20,
+                    }
+                },
+                tooltip: {
+                    backgroundColor: '#333333',
+                    titleColor: '#ffffff',
+                    bodyColor: '#ffffff'
+                }
+            }
+        }
+    });
 
     const lugar = document.getElementById('grafico_linha');
 
@@ -238,7 +250,7 @@
                 response.json().then(function (resposta) {
                     console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
                     console.log("deu true no gráfico 2");
-                    resposta.reverse();
+                    // resposta.reverse();
                     plotarGraficoSiloMedio(resposta);
                 });
             } else {
@@ -269,6 +281,10 @@
     // Esta função *plotarGrafico* usa os dados capturados na função anterior para criar o gráfico
     // Configura o gráfico (cores, tipo, etc), materializa-o na página e, 
     // A função *plotarGrafico* também invoca a função *atualizarGrafico*
+
+    let qualquer = ''
+    let data_qualquer = ''
+
     function plotarGraficoSilo(resposta) {
 
         let labels = [];
@@ -295,7 +311,7 @@
         // Inserindo valores recebidos em estrutura para plotar o gráfico
         for (var i = 0; i < resposta.length; i++) {
             dados.datasets[0].data.push(resposta[i].valor);
-            labels.push(resposta[i].data_format);
+            labels.push(resposta[i].data_format.substring(11, 16));
         }
 
 
@@ -315,7 +331,7 @@
     };
 
     function plotarGraficoSiloMedio(resposta) {
-
+        resposta.reverse();
         let labels1 = [];
         console.log('iniciando plotagem do gráfico...');
         // Criando estrutura para plotar gráfico - dados
@@ -326,8 +342,8 @@
                 label: 'Silo A',
                 data: [],
                 fill: false,
-                borderColor: 'rgb(0, 0, 0)',
-                backgroundColor: 'rgb(255, 165, 0)',
+                borderColor: '#3f88c5',
+                backgroundColor: '#3f88c5',
                 tension: 0.1,
 
             },
@@ -335,8 +351,8 @@
                 label: 'Silo B',
                 data: [],
                 fill: false,
-                borderColor: 'rgb(0, 0, 0)',
-                backgroundColor: 'rgb(255, 165, 0)',
+                borderColor: '#d00000',
+                backgroundColor: '#d00000',
                 tension: 0.1,
 
             }
@@ -352,14 +368,14 @@
         var teste = resposta.length / 2;
         var contadorTeste = 0;
 
-            for (var i = 0; i < resposta.length; i++) {
-                if(contadorTeste < teste){
-                    labels1.push(resposta[i].data_hora);
-                    contadorTeste += 1;
-                }
-            if(resposta[i].fk1 == 1){
+        for (var i = 0; i < resposta.length; i++) {
+            if (contadorTeste < teste) {
+                labels1.push(resposta[i].data_hora.substring(11, 19));
+                contadorTeste += 1;
+            }
+            if (resposta[i].fk1 == 1) {
                 dados1.datasets[0].data.push(resposta[i].valor);
-            } else{
+            } else {
                 dados1.datasets[1].data.push(resposta[i].valor);
             }
         }
@@ -396,14 +412,14 @@
             document.getElementById(`grafico_linha`),
             config1,
         )
-
+        setTimeout(() => atualizarGrafico(dados1, chartClass1), 6000);
     };
 
-    function kpiSilosMonitorados(resposta){
+    function kpiSilosMonitorados(resposta) {
         console.log(resposta);
         var contMonitorado = 0;
-        for(var i = 0; i < resposta.length; i++){
-            if(resposta[i].fkSilo != "0"){
+        for (var i = 0; i < resposta.length; i++) {
+            if (resposta[i].fkSilo != "0") {
                 contMonitorado += 1;
             }
         }
@@ -411,5 +427,60 @@
 
         silosMonitorados.innerHTML = contMonitorado;
         silosTotais.innerHTML = resposta.length;
+    }
+
+
+    function atualizarGrafico(dados1, chartClass1) {
+        fetch(`/grafico/silosAtualizar/`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (novoRegistro) {
+
+                    // obterdados(idAquario);
+                    // alertar(novoRegistro, idAquario);
+                    console.log(`data sem formatação ${data_qualquer}`)
+                    console.log(`data formatada ${qualquer}`)
+                    console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
+                    console.log(`Dados atuais do gráfico:`);
+                    console.log(dados1);
+
+                    // let avisoCaptura = document.getElementById(`avisoCaptura${idAquario}`)
+                    // avisoCaptura.innerHTML = ""
+
+
+                    if (novoRegistro[0].data_hora == dados1.labels[dados1.labels.length - 1]) {
+                        console.log("---------------------------------------------------------------")
+                        console.log("Como não há dados novos para captura, o gráfico não atualizará.")
+                        console.log("Horário do novo dado capturado:")
+                        console.log(novoRegistro[0].data_hora)
+                        console.log("Horário do último dado capturado:")
+                        console.log(dados1.labels[dados1.labels.length - 1])
+                        console.log("---------------------------------------------------------------")
+                    } else {
+                        // tirando e colocando valores no gráfico
+                        dados1.labels.shift(); // apagar o primeiro
+                        dados1.labels.push(novoRegistro[0].data_hora.substring(11, 19)); // incluir um novo momento
+
+                        dados1.datasets[0].data.shift();  // apagar o primeiro de umidade
+                        dados1.datasets[0].data.push(novoRegistro[0].valor); // incluir uma nova medida de umidade
+
+                        dados1.datasets[1].data.shift();  // apagar o primeiro de temperatura
+                        dados1.datasets[1].data.push(novoRegistro[1].valor); // incluir uma nova medida de temperatura
+
+                        chartClass1.update();
+                    }
+
+                    // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+                    proximaAtualizacao = setTimeout(() => atualizarGrafico(dados1, chartClass1), 6000);
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+                // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+                proximaAtualizacao = setTimeout(() => atualizarGrafico(dados1, chartClass1), 6000);
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+
     }
 </script>
